@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>oomph-lib: gmsh_read.h File Reference</title>
+<link rel="apple-touch-icon" sizes="57x57" href="../../figures/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../../figures/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../../figures/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../../figures/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../../figures/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../../figures/apple-touch-icon-120x120.png">
+<link rel="icon" type="image/png" href="../../figures/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../figures/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../figures/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../figures/manifest.json">
+<link rel="mask-icon" href="../../figures/safari-pinned-tab.svg" color="#008000">
+<link rel="shortcut icon" href="../../figures/favicon.ico">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="msapplication-config" content="../../figures/browserconfig.xml">
+<meta name="theme-color" content="#008000">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
+<!-- Doxygen css-->
+<!-- <link rel="stylesheet" type="text/css" href="doxygen.css"> -->
+<!-- Bootstrap -->
+<link href="../../css/bootstrap.css" rel="stylesheet">
+<!-- oomph-lib specific overrides -->
+<link rel="stylesheet" type="text/css" href="../../css/oomph_header.css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+<div class="container">
+<div class="container-fluid">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="../../html/index.html"><img alt="oomph-lib" src="../../figures/oomph_logo.png"></a>
+  </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">          
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li class="dropdown-header">Big picture</li>
+          <li><a href="../../../doc/intro/html/index.html">The finite element method</a></li>
+          <li><a href="../../../doc/the_data_structure/html/index.html">The data structure</a></li>
+          <li><a href="../../../doc/quick_guide/html/index.html">Not-so-quick guide</a></li>
+          <li><a href="../../../doc/optimisation/html/index.html">Optimisation</a></li>
+          <li><a href="../../../doc/order_of_action_functions/html/index.html">Order of action functions</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Example codes and tutorials</li>
+          <li><a href="../../../doc/example_code_list/html/index.html">List of example codes and tutorials</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#meshes">Meshing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#solvers">Solvers</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#parallel">MPI parallel processing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#visualisation">Post-processing/visualisation</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Other</li>
+          <li><a href="../../../doc/change_log/html/index.html">Change log</a></li>
+          <li><a href="../../../doc/creating_doc/html/index.html">Creating documentation</a></li>
+          <li><a href="../../../doc/coding_conventions/html/index.html">Coding conventions</a></li>
+          <li><a href="../../../doc/index/html/index.html">Index</a></li>
+          <li><a href="../../../doc/FAQ/html/index.html">FAQ</a></li>
+        </ul>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../doc/people/html/index.html">People</a></li>            
+            <li><a href="../../../doc/contact/html/index.html">Contact/Get involved</a></li>
+            <li><a href="../../../doc/publications/html/index.html">Publications</a></li>
+            <li><a href="../../../doc/acknowledgements/html/index.html">Acknowledgements</a></li>
+            <li><a href="../../../doc/copyright/html/index.html">Copyright</a></li>
+            <li><a href="../../../doc/picture_show/index.html">Picture show</a></li>
+          </ul>
+        </li>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right navbar-search">
+      <form class="navbar-form" role="search" action="../../../doc/search_results/html/index.html">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" name="q">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Go</button>
+          </span>
+        </div><!-- /input-group -->
+       <!--<div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>-->
+      </form>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</div>
+</nav>
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',false,false,'search.php','Search');
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_4075b182e53a3873a42d885f4e1e98c4.html">generic</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle"><div class="title">gmsh_read.h File Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><a href="gmsh__read_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGMSH_1_1Tuple.html">GMSH::Tuple</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGMSH_1_1Boundary.html">GMSH::Boundary</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGMSH_1_1Point.html">GMSH::Point</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">: This for point entities.  <a href="structGMSH_1_1Point.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGMSH_1_1Curve.html">GMSH::Curve</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">: This for curve entities.  <a href="structGMSH_1_1Curve.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGMSH_1_1Surface.html">GMSH::Surface</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">: This for surface entities.  <a href="structGMSH_1_1Surface.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGMSH_1_1Volume.html">GMSH::Volume</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">: This for volume entities.  <a href="structGMSH_1_1Volume.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGMSH_1_1Vertex.html">GMSH::Vertex</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">: This for the point entity of the entity mesh.  <a href="structGMSH_1_1Vertex.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGMSH_1_1Element.html">GMSH::Element</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">: This for elements including points, edges, quads and hex elements.  <a href="structGMSH_1_1Element.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGMSH_1_1Node.html">GMSH::Node</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">: This for actual node of the mesh.  <a href="structGMSH_1_1Node.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGMSH_1_1Edge.html">GMSH::Edge</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGMSH_1_1Quad.html">GMSH::Quad</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGMSH_1_1Hexa.html">GMSH::Hexa</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespaceGMSH" id="r_namespaceGMSH"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceGMSH.html">GMSH</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ae733c71ae02adc5e1a5a76acf81f8055" id="r_ae733c71ae02adc5e1a5a76acf81f8055"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ae733c71ae02adc5e1a5a76acf81f8055"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceGMSH.html#ae733c71ae02adc5e1a5a76acf81f8055">GMSH::operator+</a> (const std::vector&lt; T &gt; &amp;lhs, const std::vector&lt; T &gt; &amp;rhs)</td></tr>
+<tr class="separator:ae733c71ae02adc5e1a5a76acf81f8055"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6495044c5a6e5d2e3cce43308345b62d" id="r_a6495044c5a6e5d2e3cce43308345b62d"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a6495044c5a6e5d2e3cce43308345b62d"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceGMSH.html#a6495044c5a6e5d2e3cce43308345b62d">GMSH::operator-</a> (const std::vector&lt; T &gt; &amp;lhs, const std::vector&lt; T &gt; &amp;rhs)</td></tr>
+<tr class="separator:a6495044c5a6e5d2e3cce43308345b62d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6e2afe07b9162ed7a34c78cab85e4c8" id="r_af6e2afe07b9162ed7a34c78cab85e4c8"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:af6e2afe07b9162ed7a34c78cab85e4c8"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceGMSH.html#af6e2afe07b9162ed7a34c78cab85e4c8">GMSH::operator*</a> (const std::vector&lt; T &gt; &amp;vec, const T &amp;scalar)</td></tr>
+<tr class="separator:af6e2afe07b9162ed7a34c78cab85e4c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f6d7faf583bb5d68822e8658385ac20" id="r_a6f6d7faf583bb5d68822e8658385ac20"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a6f6d7faf583bb5d68822e8658385ac20"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceGMSH.html#a6f6d7faf583bb5d68822e8658385ac20">GMSH::operator*</a> (const T &amp;scalar, const std::vector&lt; T &gt; &amp;vec)</td></tr>
+<tr class="separator:a6f6d7faf583bb5d68822e8658385ac20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e63f20f6b416141e07d0aa389763da3" id="r_a5e63f20f6b416141e07d0aa389763da3"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a5e63f20f6b416141e07d0aa389763da3"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceGMSH.html#a5e63f20f6b416141e07d0aa389763da3">GMSH::operator/</a> (const std::vector&lt; T &gt; &amp;vec, const T &amp;scalar)</td></tr>
+<tr class="separator:a5e63f20f6b416141e07d0aa389763da3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e9fbd1c302c53682892dfa89b058972" id="r_a4e9fbd1c302c53682892dfa89b058972"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a4e9fbd1c302c53682892dfa89b058972"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceGMSH.html#a4e9fbd1c302c53682892dfa89b058972">GMSH::operator/</a> (const T &amp;scalar, const std::vector&lt; T &gt; &amp;vec)</td></tr>
+<tr class="separator:a4e9fbd1c302c53682892dfa89b058972"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ba5b5b54c0a8782d9d589c3f0db8903" id="r_a4ba5b5b54c0a8782d9d589c3f0db8903"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a4ba5b5b54c0a8782d9d589c3f0db8903"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceGMSH.html#a4ba5b5b54c0a8782d9d589c3f0db8903">GMSH::operator+=</a> (std::vector&lt; T &gt; &amp;lhs, const std::vector&lt; T &gt; &amp;rhs)</td></tr>
+<tr class="separator:a4ba5b5b54c0a8782d9d589c3f0db8903"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45326598fe7e50a609e2cf6d6a46736c" id="r_a45326598fe7e50a609e2cf6d6a46736c"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a45326598fe7e50a609e2cf6d6a46736c"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceGMSH.html#a45326598fe7e50a609e2cf6d6a46736c">GMSH::operator-=</a> (std::vector&lt; T &gt; &amp;lhs, const std::vector&lt; T &gt; &amp;rhs)</td></tr>
+<tr class="separator:a45326598fe7e50a609e2cf6d6a46736c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec7d691446eaf5ea12fb4d1a668a046d" id="r_aec7d691446eaf5ea12fb4d1a668a046d"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aec7d691446eaf5ea12fb4d1a668a046d"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceGMSH.html#aec7d691446eaf5ea12fb4d1a668a046d">GMSH::operator/=</a> (std::vector&lt; T &gt; &amp;vec, const T &amp;scalar)</td></tr>
+<tr class="separator:aec7d691446eaf5ea12fb4d1a668a046d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a037cd74ac8e42d434c39b93ad3dfb210" id="r_a037cd74ac8e42d434c39b93ad3dfb210"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a037cd74ac8e42d434c39b93ad3dfb210"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceGMSH.html#a037cd74ac8e42d434c39b93ad3dfb210">GMSH::operator^</a> (const std::vector&lt; T &gt; &amp;lhs, const std::vector&lt; T &gt; &amp;rhs)</td></tr>
+<tr class="separator:a037cd74ac8e42d434c39b93ad3dfb210"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3878ff2c976a8267317077922f818421" id="r_a3878ff2c976a8267317077922f818421"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a3878ff2c976a8267317077922f818421"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceGMSH.html#a3878ff2c976a8267317077922f818421">GMSH::operator&amp;</a> (const std::vector&lt; T &gt; &amp;lhs, const std::vector&lt; T &gt; &amp;rhs)</td></tr>
+<tr class="separator:a3878ff2c976a8267317077922f818421"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a178abcbb9a2f0e2dc52d2ad3ae2e65b5" id="r_a178abcbb9a2f0e2dc52d2ad3ae2e65b5"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a178abcbb9a2f0e2dc52d2ad3ae2e65b5"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceGMSH.html#a178abcbb9a2f0e2dc52d2ad3ae2e65b5">GMSH::mag</a> (const std::vector&lt; T &gt; &amp;vec)</td></tr>
+<tr class="separator:a178abcbb9a2f0e2dc52d2ad3ae2e65b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a126141cba6c588a2520daf3f49eb638d" id="r_a126141cba6c588a2520daf3f49eb638d"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a126141cba6c588a2520daf3f49eb638d"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceGMSH.html#a126141cba6c588a2520daf3f49eb638d">GMSH::mag</a> (const std::vector&lt; T &gt; &amp;veca, const std::vector&lt; T &gt; &amp;vecb)</td></tr>
+<tr class="separator:a126141cba6c588a2520daf3f49eb638d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:aa6bd9074b5bb095c897c76f686ead87e" id="r_aa6bd9074b5bb095c897c76f686ead87e"><td class="memItemLeft" align="right" valign="top">static const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceGMSH.html#aa6bd9074b5bb095c897c76f686ead87e">GMSH::small</a> = std::numeric_limits&lt;double&gt;::epsilon()</td></tr>
+<tr class="separator:aa6bd9074b5bb095c897c76f686ead87e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9193fd39275521351d3b2f60871aa94c" id="r_a9193fd39275521351d3b2f60871aa94c"><td class="memItemLeft" align="right" valign="top">static const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceGMSH.html#a9193fd39275521351d3b2f60871aa94c">GMSH::vSmall</a> = std::numeric_limits&lt;double&gt;::min()</td></tr>
+<tr class="separator:a9193fd39275521351d3b2f60871aa94c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8af5655ceb7f97cf14353c200060f3ce" id="r_a8af5655ceb7f97cf14353c200060f3ce"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceGMSH.html#a8af5655ceb7f97cf14353c200060f3ce">GMSH::defFlag</a> = 0</td></tr>
+<tr class="separator:a8af5655ceb7f97cf14353c200060f3ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+</div><!-- contents -->
+
+    <!-- jQuery for Bootstrap and Doxygen -->
+    <script src="../../js/jquery-1.12.0.min.js"></script>
+    <!-- Minified boostrap plugins-->
+    <script src="../../js/bootstrap.js"></script>
+    <!-- Doxygen dependency to add powertips to source code-->
+    <script src="../../js/jquery.powertip.min.js"></script>
+    <!-- The  following script is generated by doxygen and hides/shows levels in 
+         the data structure lists and adds powertips to source code-->
+    <script src="../../js/dynsections.js" ></script>
+    <!-- add to Doxygen's class names so bootstrap css and js recognises them-->
+    <script type="text/javascript">
+    $(".contents").addClass("container");
+    $(".header").addClass("container");
+    $(".navpath").addClass("container");
+    $("#navrow3").addClass("container");
+    $("#navrow4").addClass("container");
+    $(".mlabel").addClass("label");
+    $(".mlabel").addClass("label-default");
+    $(".memitem").addClass("panel");
+    $(".memitem").addClass("panel-info");
+    $(".memproto").addClass("panel-heading");
+    $(".memdoc").addClass("panel-body");
+    </script>
+    <footer>
+      <div class="container">
+        <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Sat Dec 27 2025 17:53:15
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

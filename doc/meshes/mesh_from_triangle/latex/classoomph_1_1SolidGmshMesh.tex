@@ -1,0 +1,94 @@
+\doxysection{oomph\+::Solid\+Gmsh\+Mesh\texorpdfstring{$<$}{<} ELEMENT \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classoomph_1_1SolidGmshMesh}{}\label{classoomph_1_1SolidGmshMesh}\index{oomph::SolidGmshMesh$<$ ELEMENT $>$@{oomph::SolidGmshMesh$<$ ELEMENT $>$}}
+
+
+Gmsh-\/based mesh upgraded to become a solid mesh. Automatically enumerates all boundaries.  
+
+
+
+
+{\ttfamily \#include $<$gmsh\+\_\+mesh.\+h$>$}
+
+Inheritance diagram for oomph\+::Solid\+Gmsh\+Mesh\texorpdfstring{$<$}{<} ELEMENT \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classoomph_1_1SolidGmshMesh}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1SolidGmshMesh_a11d56dd78f445237435058faf50532be}{Solid\+Gmsh\+Mesh}} (\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{const}} std\+::string \&\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{file\+\_\+name}}, \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{bool}} \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{verbose}}, \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{Time\+Stepper}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{time\+\_\+stepper\+\_\+pt}}=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper)
+\begin{DoxyCompactList}\small\item\em Constructor. Boundary coordinates are setup automatically. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1SolidGmshMesh_a80d06fe46af156242d47c94bd60c6ad1}{\texorpdfstring{$\sim$}{\string~}\+Solid\+Gmsh\+Mesh}} () \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{override}}=\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{default}}
+\begin{DoxyCompactList}\small\item\em Empty Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classoomph_1_1GmshMesh}{oomph\+::\+Gmsh\+Mesh$<$ ELEMENT $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1GmshMesh_a9bc7e662efbd5263126f554ae9d5e9ea}{Gmsh\+Mesh}} ()
+\begin{DoxyCompactList}\small\item\em Default Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1GmshMesh_a3280ea8a8dd2a2d065038bfc6c224f40}{Gmsh\+Mesh}} (\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{const}} std\+::string \&\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{filename}}, \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{bool}} \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{verbose}}, \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{Time\+Stepper}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{time\+\_\+stepper\+\_\+pt}}=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper)
+\begin{DoxyCompactList}\small\item\em Constructor with the input files. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1GmshMesh_a6ec84186e0b9b96611cd7ceeefc7343f}{\texorpdfstring{$\sim$}{\string~}\+Gmsh\+Mesh}} () \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{override}}=\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{default}}
+\begin{DoxyCompactList}\small\item\em Empty destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classoomph_1_1GmshMesh}{oomph\+::\+Gmsh\+Mesh$<$ ELEMENT $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ GMSH\+::\+Boundary $>$ \mbox{\hyperlink{classoomph_1_1GmshMesh_a9911faf37724b965691c2ec8d4609205}{boundaries}}
+\item 
+std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{int}}, \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{int}} $>$ \mbox{\hyperlink{classoomph_1_1GmshMesh_a08d2c5ba162f3577592b590706b2304d}{ordered\+BC}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classoomph_1_1GmshMesh}{oomph\+::\+Gmsh\+Mesh$<$ ELEMENT $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{void}} \mbox{\hyperlink{classoomph_1_1GmshMesh_abfa3438a3a3bc09a47788e21dd26bbbe}{build\+\_\+from\+\_\+scaffold}} (\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{Time\+Stepper}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{time\+\_\+stepper\+\_\+pt}})
+\begin{DoxyCompactList}\small\item\em Build mesh from scaffold. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classoomph_1_1GmshMesh}{oomph\+::\+Gmsh\+Mesh$<$ ELEMENT $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{Gmsh\+Scaffold\+Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classoomph_1_1GmshMesh_ada815dcd8ce813509afa5c82660f4bbe}{Tmp\+\_\+mesh\+\_\+pt}} = \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{nullptr}}
+\begin{DoxyCompactList}\small\item\em Temporary scaffold mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{class}} \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{ELEMENT}}$>$\newline
+class oomph\+::\+Solid\+Gmsh\+Mesh$<$ ELEMENT $>$}
+Gmsh-\/based mesh upgraded to become a solid mesh. Automatically enumerates all boundaries. 
+
+Definition at line \mbox{\hyperlink{gmsh__mesh_8h_source_l00097}{97}} of file \mbox{\hyperlink{gmsh__mesh_8h_source}{gmsh\+\_\+mesh.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classoomph_1_1SolidGmshMesh_a11d56dd78f445237435058faf50532be}\label{classoomph_1_1SolidGmshMesh_a11d56dd78f445237435058faf50532be} 
+\index{oomph::SolidGmshMesh$<$ ELEMENT $>$@{oomph::SolidGmshMesh$<$ ELEMENT $>$}!SolidGmshMesh@{SolidGmshMesh}}
+\index{SolidGmshMesh@{SolidGmshMesh}!oomph::SolidGmshMesh$<$ ELEMENT $>$@{oomph::SolidGmshMesh$<$ ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{SolidGmshMesh()}{SolidGmshMesh()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{class}} \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{ELEMENT}} $>$ \\
+\mbox{\hyperlink{classoomph_1_1SolidGmshMesh}{oomph\+::\+Solid\+Gmsh\+Mesh}}$<$ \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{ELEMENT}} $>$\+::\+Solid\+Gmsh\+Mesh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{const}} std\+::string \&}]{file\+\_\+name,  }\item[{\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{bool}}}]{verbose,  }\item[{\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{Time\+Stepper}} \texorpdfstring{$\ast$}{*}}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor. Boundary coordinates are setup automatically. 
+
+
+
+Definition at line \mbox{\hyperlink{gmsh__mesh_8h_source_l00103}{103}} of file \mbox{\hyperlink{gmsh__mesh_8h_source}{gmsh\+\_\+mesh.\+h}}.
+
+\Hypertarget{classoomph_1_1SolidGmshMesh_a80d06fe46af156242d47c94bd60c6ad1}\label{classoomph_1_1SolidGmshMesh_a80d06fe46af156242d47c94bd60c6ad1} 
+\index{oomph::SolidGmshMesh$<$ ELEMENT $>$@{oomph::SolidGmshMesh$<$ ELEMENT $>$}!````~SolidGmshMesh@{\texorpdfstring{$\sim$}{\string~}SolidGmshMesh}}
+\index{````~SolidGmshMesh@{\texorpdfstring{$\sim$}{\string~}SolidGmshMesh}!oomph::SolidGmshMesh$<$ ELEMENT $>$@{oomph::SolidGmshMesh$<$ ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}SolidGmshMesh()}{\string~SolidGmshMesh()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{class}} \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{ELEMENT}} $>$ \\
+\mbox{\hyperlink{classoomph_1_1SolidGmshMesh}{oomph\+::\+Solid\+Gmsh\+Mesh}}$<$ \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{ELEMENT}} $>$\+::\texorpdfstring{$\sim$}{\string~}\mbox{\hyperlink{classoomph_1_1SolidGmshMesh}{Solid\+Gmsh\+Mesh}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+Empty Destructor. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gmsh__mesh_8h}{gmsh\+\_\+mesh.\+h}}\end{DoxyCompactItemize}

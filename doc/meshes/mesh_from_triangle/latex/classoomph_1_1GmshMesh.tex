@@ -1,0 +1,186 @@
+\doxysection{oomph\+::Gmsh\+Mesh\texorpdfstring{$<$}{<} ELEMENT \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classoomph_1_1GmshMesh}{}\label{classoomph_1_1GmshMesh}\index{oomph::GmshMesh$<$ ELEMENT $>$@{oomph::GmshMesh$<$ ELEMENT $>$}}
+
+
+Quadrilateral mesh generator; Uses input from Reader. See\+: \href{http://members.shaw.ca/bjoe/}{\texttt{ http\+://members.\+shaw.\+ca/bjoe/}} Currently only for four-\/noded quads -- extension to higher-\/order quads should be trivial (see the corresponding classes for triangular meshes).  
+
+
+
+
+{\ttfamily \#include $<$gmsh\+\_\+mesh.\+h$>$}
+
+Inheritance diagram for oomph\+::Gmsh\+Mesh\texorpdfstring{$<$}{<} ELEMENT \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classoomph_1_1GmshMesh}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1GmshMesh_a9bc7e662efbd5263126f554ae9d5e9ea}{Gmsh\+Mesh}} ()
+\begin{DoxyCompactList}\small\item\em Default Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1GmshMesh_a3280ea8a8dd2a2d065038bfc6c224f40}{Gmsh\+Mesh}} (\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{const}} std\+::string \&\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{filename}}, \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{bool}} \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{verbose}}, \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{Time\+Stepper}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{time\+\_\+stepper\+\_\+pt}}=\&Mesh\+::\+Default\+\_\+\+Time\+Stepper)
+\begin{DoxyCompactList}\small\item\em Constructor with the input files. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classoomph_1_1GmshMesh_a6ec84186e0b9b96611cd7ceeefc7343f}{\texorpdfstring{$\sim$}{\string~}\+Gmsh\+Mesh}} () \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{override}}=\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{default}}
+\begin{DoxyCompactList}\small\item\em Empty destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ GMSH\+::\+Boundary $>$ \mbox{\hyperlink{classoomph_1_1GmshMesh_a9911faf37724b965691c2ec8d4609205}{boundaries}}
+\item 
+std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{int}}, \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{int}} $>$ \mbox{\hyperlink{classoomph_1_1GmshMesh_a08d2c5ba162f3577592b590706b2304d}{ordered\+BC}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{void}} \mbox{\hyperlink{classoomph_1_1GmshMesh_abfa3438a3a3bc09a47788e21dd26bbbe}{build\+\_\+from\+\_\+scaffold}} (\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{Time\+Stepper}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{time\+\_\+stepper\+\_\+pt}})
+\begin{DoxyCompactList}\small\item\em Build mesh from scaffold. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{Gmsh\+Scaffold\+Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classoomph_1_1GmshMesh_ada815dcd8ce813509afa5c82660f4bbe}{Tmp\+\_\+mesh\+\_\+pt}} = \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{nullptr}}
+\begin{DoxyCompactList}\small\item\em Temporary scaffold mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{class}} \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{ELEMENT}}$>$\newline
+class oomph\+::\+Gmsh\+Mesh$<$ ELEMENT $>$}
+Quadrilateral mesh generator; Uses input from Reader. See\+: \href{http://members.shaw.ca/bjoe/}{\texttt{ http\+://members.\+shaw.\+ca/bjoe/}} Currently only for four-\/noded quads -- extension to higher-\/order quads should be trivial (see the corresponding classes for triangular meshes). 
+
+Definition at line \mbox{\hyperlink{gmsh__mesh_8h_source_l00045}{45}} of file \mbox{\hyperlink{gmsh__mesh_8h_source}{gmsh\+\_\+mesh.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classoomph_1_1GmshMesh_a9bc7e662efbd5263126f554ae9d5e9ea}\label{classoomph_1_1GmshMesh_a9bc7e662efbd5263126f554ae9d5e9ea} 
+\index{oomph::GmshMesh$<$ ELEMENT $>$@{oomph::GmshMesh$<$ ELEMENT $>$}!GmshMesh@{GmshMesh}}
+\index{GmshMesh@{GmshMesh}!oomph::GmshMesh$<$ ELEMENT $>$@{oomph::GmshMesh$<$ ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{GmshMesh()}{GmshMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{class}} \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{ELEMENT}} $>$ \\
+\mbox{\hyperlink{classoomph_1_1GmshMesh}{oomph\+::\+Gmsh\+Mesh}}$<$ \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{ELEMENT}} $>$\+::\+Gmsh\+Mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default Constructor. 
+
+
+
+Definition at line \mbox{\hyperlink{gmsh__mesh_8h_source_l00049}{49}} of file \mbox{\hyperlink{gmsh__mesh_8h_source}{gmsh\+\_\+mesh.\+h}}.
+
+\Hypertarget{classoomph_1_1GmshMesh_a3280ea8a8dd2a2d065038bfc6c224f40}\label{classoomph_1_1GmshMesh_a3280ea8a8dd2a2d065038bfc6c224f40} 
+\index{oomph::GmshMesh$<$ ELEMENT $>$@{oomph::GmshMesh$<$ ELEMENT $>$}!GmshMesh@{GmshMesh}}
+\index{GmshMesh@{GmshMesh}!oomph::GmshMesh$<$ ELEMENT $>$@{oomph::GmshMesh$<$ ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{GmshMesh()}{GmshMesh()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{class}} \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{ELEMENT}} $>$ \\
+\mbox{\hyperlink{classoomph_1_1GmshMesh}{oomph\+::\+Gmsh\+Mesh}}$<$ \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{ELEMENT}} $>$\+::\+Gmsh\+Mesh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{const}} std\+::string \&}]{filename,  }\item[{\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{bool}}}]{verbose,  }\item[{\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{Time\+Stepper}} \texorpdfstring{$\ast$}{*}}]{time\+\_\+stepper\+\_\+pt = {\ttfamily \&Mesh\+:\+:Default\+\_\+TimeStepper} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor with the input files. 
+
+
+
+Definition at line \mbox{\hyperlink{gmsh__mesh_8h_source_l00056}{56}} of file \mbox{\hyperlink{gmsh__mesh_8h_source}{gmsh\+\_\+mesh.\+h}}.
+
+
+
+References \mbox{\hyperlink{gmsh__mesh_8h_source_l00080}{oomph\+::\+Gmsh\+Mesh$<$ ELEMENT $>$\+::boundaries}}, \mbox{\hyperlink{gmsh__mesh_8template_8cc_source_l00045}{oomph\+::\+Gmsh\+Mesh$<$ ELEMENT $>$\+::build\+\_\+from\+\_\+scaffold()}}, \mbox{\hyperlink{gmsh__mesh_8h_source_l00082}{oomph\+::\+Gmsh\+Mesh$<$ ELEMENT $>$\+::ordered\+BC}}, and \mbox{\hyperlink{gmsh__mesh_8h_source_l00085}{oomph\+::\+Gmsh\+Mesh$<$ ELEMENT $>$\+::\+Tmp\+\_\+mesh\+\_\+pt}}.
+
+\Hypertarget{classoomph_1_1GmshMesh_a6ec84186e0b9b96611cd7ceeefc7343f}\label{classoomph_1_1GmshMesh_a6ec84186e0b9b96611cd7ceeefc7343f} 
+\index{oomph::GmshMesh$<$ ELEMENT $>$@{oomph::GmshMesh$<$ ELEMENT $>$}!````~GmshMesh@{\texorpdfstring{$\sim$}{\string~}GmshMesh}}
+\index{````~GmshMesh@{\texorpdfstring{$\sim$}{\string~}GmshMesh}!oomph::GmshMesh$<$ ELEMENT $>$@{oomph::GmshMesh$<$ ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}GmshMesh()}{\string~GmshMesh()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{class}} \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{ELEMENT}} $>$ \\
+\mbox{\hyperlink{classoomph_1_1GmshMesh}{oomph\+::\+Gmsh\+Mesh}}$<$ \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{ELEMENT}} $>$\+::\texorpdfstring{$\sim$}{\string~}\mbox{\hyperlink{classoomph_1_1GmshMesh}{Gmsh\+Mesh}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+Empty destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classoomph_1_1GmshMesh_abfa3438a3a3bc09a47788e21dd26bbbe}\label{classoomph_1_1GmshMesh_abfa3438a3a3bc09a47788e21dd26bbbe} 
+\index{oomph::GmshMesh$<$ ELEMENT $>$@{oomph::GmshMesh$<$ ELEMENT $>$}!build\_from\_scaffold@{build\_from\_scaffold}}
+\index{build\_from\_scaffold@{build\_from\_scaffold}!oomph::GmshMesh$<$ ELEMENT $>$@{oomph::GmshMesh$<$ ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{build\_from\_scaffold()}{build\_from\_scaffold()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{class}} \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{ELEMENT}} $>$ \\
+\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{void}} \mbox{\hyperlink{classoomph_1_1GmshMesh}{oomph\+::\+Gmsh\+Mesh}}$<$ \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{ELEMENT}} $>$\+::build\+\_\+from\+\_\+scaffold (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{Time\+Stepper}} \texorpdfstring{$\ast$}{*}}]{time\+\_\+stepper\+\_\+pt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Build mesh from scaffold. 
+
+//////////////////////////////////////////////////////////////////// ////////////////////////////////////////////////////////////////////
+
+Build unstructured tet mesh based on output from scaffold 
+
+Definition at line \mbox{\hyperlink{gmsh__mesh_8template_8cc_source_l00045}{45}} of file \mbox{\hyperlink{gmsh__mesh_8template_8cc_source}{gmsh\+\_\+mesh.\+template.\+cc}}.
+
+
+
+References \mbox{\hyperlink{triangle__mesh_8h_source_l01334}{oomph\+::\+Triangle\+Mesh$<$ ELEMENT $>$\+::\+Tmp\+\_\+mesh\+\_\+pt}}.
+
+
+
+Referenced by \mbox{\hyperlink{gmsh__mesh_8h_source_l00056}{oomph\+::\+Gmsh\+Mesh$<$ ELEMENT $>$\+::\+Gmsh\+Mesh()}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classoomph_1_1GmshMesh_a9911faf37724b965691c2ec8d4609205}\label{classoomph_1_1GmshMesh_a9911faf37724b965691c2ec8d4609205} 
+\index{oomph::GmshMesh$<$ ELEMENT $>$@{oomph::GmshMesh$<$ ELEMENT $>$}!boundaries@{boundaries}}
+\index{boundaries@{boundaries}!oomph::GmshMesh$<$ ELEMENT $>$@{oomph::GmshMesh$<$ ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{boundaries}{boundaries}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{class}} \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{ELEMENT}} $>$ \\
+std\+::vector$<$GMSH\+::\+Boundary$>$ \mbox{\hyperlink{classoomph_1_1GmshMesh}{oomph\+::\+Gmsh\+Mesh}}$<$ \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{ELEMENT}} $>$\+::boundaries}
+
+
+
+Definition at line \mbox{\hyperlink{gmsh__mesh_8h_source_l00080}{80}} of file \mbox{\hyperlink{gmsh__mesh_8h_source}{gmsh\+\_\+mesh.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{gmsh__mesh_8h_source_l00056}{oomph\+::\+Gmsh\+Mesh$<$ ELEMENT $>$\+::\+Gmsh\+Mesh()}}.
+
+\Hypertarget{classoomph_1_1GmshMesh_a08d2c5ba162f3577592b590706b2304d}\label{classoomph_1_1GmshMesh_a08d2c5ba162f3577592b590706b2304d} 
+\index{oomph::GmshMesh$<$ ELEMENT $>$@{oomph::GmshMesh$<$ ELEMENT $>$}!orderedBC@{orderedBC}}
+\index{orderedBC@{orderedBC}!oomph::GmshMesh$<$ ELEMENT $>$@{oomph::GmshMesh$<$ ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{orderedBC}{orderedBC}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{class}} \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{ELEMENT}} $>$ \\
+std\+::unordered\+\_\+map$<$\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{int}}, \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{int}}$>$ \mbox{\hyperlink{classoomph_1_1GmshMesh}{oomph\+::\+Gmsh\+Mesh}}$<$ \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{ELEMENT}} $>$\+::ordered\+BC}
+
+
+
+Definition at line \mbox{\hyperlink{gmsh__mesh_8h_source_l00082}{82}} of file \mbox{\hyperlink{gmsh__mesh_8h_source}{gmsh\+\_\+mesh.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{gmsh__mesh_8h_source_l00056}{oomph\+::\+Gmsh\+Mesh$<$ ELEMENT $>$\+::\+Gmsh\+Mesh()}}.
+
+\Hypertarget{classoomph_1_1GmshMesh_ada815dcd8ce813509afa5c82660f4bbe}\label{classoomph_1_1GmshMesh_ada815dcd8ce813509afa5c82660f4bbe} 
+\index{oomph::GmshMesh$<$ ELEMENT $>$@{oomph::GmshMesh$<$ ELEMENT $>$}!Tmp\_mesh\_pt@{Tmp\_mesh\_pt}}
+\index{Tmp\_mesh\_pt@{Tmp\_mesh\_pt}!oomph::GmshMesh$<$ ELEMENT $>$@{oomph::GmshMesh$<$ ELEMENT $>$}}
+\doxysubsubsection{\texorpdfstring{Tmp\_mesh\_pt}{Tmp\_mesh\_pt}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{class}} \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{ELEMENT}} $>$ \\
+\mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{Gmsh\+Scaffold\+Mesh}}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classoomph_1_1GmshMesh}{oomph\+::\+Gmsh\+Mesh}}$<$ \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{ELEMENT}} $>$\+::\+Tmp\+\_\+mesh\+\_\+pt = \mbox{\hyperlink{classoomph_1_1RefineableTriangleMesh}{nullptr}}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Temporary scaffold mesh. 
+
+
+
+Definition at line \mbox{\hyperlink{gmsh__mesh_8h_source_l00085}{85}} of file \mbox{\hyperlink{gmsh__mesh_8h_source}{gmsh\+\_\+mesh.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{gmsh__mesh_8h_source_l00056}{oomph\+::\+Gmsh\+Mesh$<$ ELEMENT $>$\+::\+Gmsh\+Mesh()}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gmsh__mesh_8h}{gmsh\+\_\+mesh.\+h}}\item 
+\mbox{\hyperlink{gmsh__mesh_8template_8cc}{gmsh\+\_\+mesh.\+template.\+cc}}\end{DoxyCompactItemize}

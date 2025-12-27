@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>oomph-lib: Member List</title>
+<link rel="apple-touch-icon" sizes="57x57" href="../../figures/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../../figures/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../../figures/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../../figures/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../../figures/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../../figures/apple-touch-icon-120x120.png">
+<link rel="icon" type="image/png" href="../../figures/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="../../figures/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../../figures/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="../../figures/manifest.json">
+<link rel="mask-icon" href="../../figures/safari-pinned-tab.svg" color="#008000">
+<link rel="shortcut icon" href="../../figures/favicon.ico">
+<meta name="msapplication-TileColor" content="#00a300">
+<meta name="msapplication-config" content="../../figures/browserconfig.xml">
+<meta name="theme-color" content="#008000">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
+<!-- Doxygen css-->
+<!-- <link rel="stylesheet" type="text/css" href="doxygen.css"> -->
+<!-- Bootstrap -->
+<link href="../../css/bootstrap.css" rel="stylesheet">
+<!-- oomph-lib specific overrides -->
+<link rel="stylesheet" type="text/css" href="../../css/oomph_header.css">
+</head>
+<body>
+<nav class="navbar navbar-default">
+<div class="container">
+<div class="container-fluid">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="../../html/index.html"><img alt="oomph-lib" src="../../figures/oomph_logo.png"></a>
+  </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">          
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li class="dropdown-header">Big picture</li>
+          <li><a href="../../../doc/intro/html/index.html">The finite element method</a></li>
+          <li><a href="../../../doc/the_data_structure/html/index.html">The data structure</a></li>
+          <li><a href="../../../doc/quick_guide/html/index.html">Not-so-quick guide</a></li>
+          <li><a href="../../../doc/optimisation/html/index.html">Optimisation</a></li>
+          <li><a href="../../../doc/order_of_action_functions/html/index.html">Order of action functions</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Example codes and tutorials</li>
+          <li><a href="../../../doc/example_code_list/html/index.html">List of example codes and tutorials</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#meshes">Meshing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#solvers">Solvers</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#parallel">MPI parallel processing</a></li>
+          <li><a href="../../../doc/example_code_list/html/index.html#visualisation">Post-processing/visualisation</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Other</li>
+          <li><a href="../../../doc/change_log/html/index.html">Change log</a></li>
+          <li><a href="../../../doc/creating_doc/html/index.html">Creating documentation</a></li>
+          <li><a href="../../../doc/coding_conventions/html/index.html">Coding conventions</a></li>
+          <li><a href="../../../doc/index/html/index.html">Index</a></li>
+          <li><a href="../../../doc/FAQ/html/index.html">FAQ</a></li>
+        </ul>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../../doc/people/html/index.html">People</a></li>            
+            <li><a href="../../../doc/contact/html/index.html">Contact/Get involved</a></li>
+            <li><a href="../../../doc/publications/html/index.html">Publications</a></li>
+            <li><a href="../../../doc/acknowledgements/html/index.html">Acknowledgements</a></li>
+            <li><a href="../../../doc/copyright/html/index.html">Copyright</a></li>
+            <li><a href="../../../doc/picture_show/index.html">Picture show</a></li>
+          </ul>
+        </li>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right navbar-search">
+      <form class="navbar-form" role="search" action="../../../doc/search_results/html/index.html">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" name="q">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Go</button>
+          </span>
+        </div><!-- /input-group -->
+       <!--<div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>-->
+      </form>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</div>
+</nav>
+<!-- Generated by Doxygen 1.9.8 -->
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',false,false,'search.php','Search');
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceGMSH.html">GMSH</a></li><li class="navelem"><a class="el" href="classGMSH_1_1Gmsh.html">Gmsh</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">GMSH::Gmsh Member List</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>This is the complete list of members for <a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a>, including all inherited members.</p>
+<table class="directory">
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a84f25f001bef11038d2e2ddc6ae5a29a">addInternalEdge</a>(std::vector&lt; int &gt; &amp;line)</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#ae691de82d28a710042f9f92121169ca5">addInternalQuad</a>(std::vector&lt; int &gt; &amp;face)</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a8b2e8251ac21b8ce899e74f6c6cca734">addMissingEdge</a>(Quad &amp;quad)</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#ac3248464f03593d952830be96edc42a3">addMissingQuad</a>(Hexa &amp;hex)</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a49c8d7d0aa767779153964b913ccfe26">areSimilar</a>(std::vector&lt; int &gt; a, std::vector&lt; int &gt; b)</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span><span class="mlabel">static</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a487927a7168503b828f541392cea3de0">boundaries</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a65c3bdf113ae2729e030e3ceb60d8a9f">cEntities</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a175518e1a2660585e04ad53c6b55de26">collectEdges</a>()</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a0c712533d2baa55fe7bc43b25fb90a30">collectHexas</a>()</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a4a8f31b86bb1957878624dd8e997c93c">collectNodes</a>()</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a8e60e4986b6ce0fe299889de80e2b698">collectQuads</a>()</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a090ae60e0cb8cb22cbbaa80bc4e80cc3">commonInternalEdges</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#acdcc5ce1fc03f9e39cc715b0eff14873">correctOrientation</a>(Quad &amp;quad)</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a30b0d45e429f77c43c1e9674502d5cdd">correctOrientation</a>(const Hexa &amp;hex)</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a53440e1a20883ffff18da5083d9b44d4af30751418a745d023cf2ae13b5d73ab9">Curve_</a> enum value</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a5495529989af0fdba1b686cf9e346dd6">duration</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#adfd10ce83b56db395860ea8d093b44eb">edgeList</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#aa53b04c1b8f0035e84af84d16ab89918">edges</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a2ffeec070105a49580f7cb0089d8e7e0">edgesInfo</a>()</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a131ae70cd52098fc6324410cc92fe021">edgesPerElement</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a2a6a7d28efdca47883f508524c67c25d">elements</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a617b447f47794bbc13350cbb613ec0ab">ElementType</a> enum name</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a1ce1bba6bb884162cd07467f5cdc7f4f">entityTagToBoundaries</a>()</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a53440e1a20883ffff18da5083d9b44d4">EntityType</a> enum name</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a571a128bad240a3e7ab8c1d3f9e777d7">facesPerElement</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a589150c180ba1bd9fd3c0138e1dea0bb">fillInTags</a>(Hexa &amp;hexa)</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#aa911c975b579fe1d4061051cf6888113">fillInTags</a>(Quad &amp;quad)</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a3e1a04319acd317d67eb4ca7484266a6">found2</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a1430b934621dd2d254f1a6d882095b74">found20</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a9c662657aee09f528f7e5e13c7b4110f">found4</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#adecc8cf22babcb61e3bcb9f3516f7f87">fourNodesList</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a800adb8990eafecba1d812cf040bc9fa">getArea</a>(const std::vector&lt; int &gt; &amp;points)</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#ade5b4003d9c184ff0d6bd8625c0e46b6">getBoundaryId</a>(const std::string &amp;bName)</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#af327da1e8a8584b45073e6d2cbe34414">getBoundSize</a>() const</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a0efc7d08b7a3686c485959da91842623">getCenter</a>(const Hexa &amp;hex)</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a6ebb30b7e986fc19cb93806cd8a0a081">getCenter</a>(const std::vector&lt; int &gt; &amp;nodesTag)</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a5439cd9fffcdcee6b28f18b6acd8e0ee">getEdge</a>(size_t e)</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#abbc86eca2f6dd9ed728e3719580f8a73">getEdges</a>() const</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a3c706ad7b2f2ddff3ab531f20c786434">getEdges</a>(const Quad &amp;quad)</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span><span class="mlabel">static</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#acb6e68075bdb78efbf9a553c44015ab0">getEdgesPerElement</a>() const</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a435c3c18218e805a7a1c64d9e83cfb89">getEdgesSize</a>() const</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a1c03fd6ec6dbb99c75926115028860a3">getFaces</a>(const Hexa &amp;hexa)</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a9aa707e317e69e272978dc4dc1c10f94">getFacesPerElement</a>() const</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a486726479a90dd4b1b6901cc2ff151c3">getHexa</a>(size_t h)</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a00ffa1cd03642eba3763abb6b59de1b4">getHexas</a>() const</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#ac1881afde31221c7ae68c06c5c811a0d">getHexasSize</a>() const</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a51c12d53012b41a43c908cf879add7d0">getMeshDim</a>() const</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#aff91696be8431773a33b73f159b49adf">getNode</a>(size_t n)</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a2769fe4185103a84106bfe431ea6768b">getNodes</a>() const</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#ac05da7dc67af795a062a557a7b052030">getNodesPerElement</a>() const</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a268e659811d6c5c8c155fcb431b1817c">getNodesSize</a>() const</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a8da86b54e6c5b6a3eaccae09dc5ff354">getQuad</a>(size_t q)</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a58eb3168c29c605e43e9d014a2703149">getQuads</a>() const</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a8b748ebb5a258c7e7502b83f67adb5fa">getQuadsSize</a>() const</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a54e8f81311f77b2c28c8594f8aa89d63">Gmsh</a>()=default</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#acc0d6b0027faff2c07b7fdf26d95d72d">Gmsh</a>(const std::string &amp;filename, bool verbose=false)</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">explicit</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a0b90f4a6b364c81b9ce389961f61e8aa">Gmsh</a>(const Gmsh &amp;)=delete</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a7f8131190ebaa9fd375f6305805ceb2c">Gmsh</a>(Gmsh &amp;&amp;)=delete</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a617b447f47794bbc13350cbb613ec0abaa36712ec5e05615e540ed815a822d1aa">Hexahedral2ndOrder_</a> enum value</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a617b447f47794bbc13350cbb613ec0aba929150f96bf0dfa05d8d3640501f5ade">Hexahedral_</a> enum value</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a6a726254b81f26fd3f4754a67ce09937">hexas</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a46fe2d9e4fc82e53b40b26659a57fc3b">hexasInfo</a>()</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a2accfee53006cc45dc0af2904ab63e71">inList</a>(std::vector&lt; int &gt; &amp;q, std::vector&lt; Edge &gt; &amp;E)</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span><span class="mlabel">static</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#ad04247d90fa76fcefec9c401191a987d">inList</a>(std::vector&lt; int &gt; &amp;q, std::vector&lt; Quad &gt; &amp;Q)</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#aa46b44206b7d85762199b83b9bfbab5e">internalQuads</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a504b814c1c919248950f393060c10342">kernel</a>()</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a617b447f47794bbc13350cbb613ec0aba61147aff9ced2381663403710bc56b4b">Line2ndOrder_</a> enum value</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a617b447f47794bbc13350cbb613ec0aba46fe85d73221a8f7311aed2713c13ed5">Line_</a> enum value</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a9d7b8eb3425c929e6608b23abb91e7bc">minNodeTag</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#aaee718bd4769591b7d1f230fce747a08">mshFile</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a9dcca103137edc18b11253b45d8be2d1">nodes</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a22fbc3b03c1ff5c982426498c76c3a30">nodesInfo</a>()</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a1cb2cd47193f63b58f0d8f108316bbd1">nodesPerElement</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a57b2090f9319d7953c4d65e34b745e80">oldNumber</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#ac787392fd48ab89ec508084766b143b2">operator=</a>(Gmsh &amp;&amp;)=delete</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#ae62ca15d8ecf336d707fe8fc3d95a129">orderedBC</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#acca6653b342979c48484a55ca99600f7">pEntities</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a53440e1a20883ffff18da5083d9b44d4a4e821155c33e0b498d2733e6552e6665">Point_</a> enum value</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a83472230f18943bec77142f4ca7d58ff">printInfo</a>(bool)</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a0fa86ee35837bf21e426d022c70580ae">quadList</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a617b447f47794bbc13350cbb613ec0aba4fc0ab49a247d9ed5205437fd1fe23e7">Quadrilateral2ndOrder_</a> enum value</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a617b447f47794bbc13350cbb613ec0aba2bb62b2f8cb0ddabdda92b5345df795e">Quadrilateral_</a> enum value</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a5318d4f7ecf50e983fa3f367c55ca519">quads</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#ace11e02242d527a24b1b0adcdf18bbb2">quadsInfo</a>()</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a04791a1fe0bca480a4f10e331b2f79bb">renumber</a>()</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#ad4c71a41bab5a75f52b3e3e056cafe81">renumberBCondition</a>()</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a771d320280219fc60e05264bd52d8ca7">sEntities</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a53440e1a20883ffff18da5083d9b44d4ac0d994d17d79969de2bc83cf617b6044">Surface_</a> enum value</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a1d1e1648f34e88053a505794bc7b29b2">tuples</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a6a5de499ad85bee8842ae45f705630f7">twoNodesList</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#af1e26d7235647f6129943df41ca4c2ca">vEntities</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#ae31bb4aaa78813aabee84b6c8b12e26f">verbose_</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a617b447f47794bbc13350cbb613ec0aba3b6ddc7c50e5f4d2edab924d93f83ce9">Vertex_</a> enum value</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#ae2f3e2e85248a0b6e99a6182bdcd5247">vertices</a></td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#a53440e1a20883ffff18da5083d9b44d4a95de9d813f28c4df787d42221bbe67be">Volume_</a> enum value</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html#aeb565322d0f702fb85c79e8362d13f5b">~Gmsh</a>()=default</td><td class="entry"><a class="el" href="classGMSH_1_1Gmsh.html">GMSH::Gmsh</a></td><td class="entry"></td></tr>
+</table></div><!-- contents -->
+
+    <!-- jQuery for Bootstrap and Doxygen -->
+    <script src="../../js/jquery-1.12.0.min.js"></script>
+    <!-- Minified boostrap plugins-->
+    <script src="../../js/bootstrap.js"></script>
+    <!-- Doxygen dependency to add powertips to source code-->
+    <script src="../../js/jquery.powertip.min.js"></script>
+    <!-- The  following script is generated by doxygen and hides/shows levels in 
+         the data structure lists and adds powertips to source code-->
+    <script src="../../js/dynsections.js" ></script>
+    <!-- add to Doxygen's class names so bootstrap css and js recognises them-->
+    <script type="text/javascript">
+    $(".contents").addClass("container");
+    $(".header").addClass("container");
+    $(".navpath").addClass("container");
+    $("#navrow3").addClass("container");
+    $("#navrow4").addClass("container");
+    $(".mlabel").addClass("label");
+    $(".mlabel").addClass("label-default");
+    $(".memitem").addClass("panel");
+    $(".memitem").addClass("panel-info");
+    $(".memproto").addClass("panel-heading");
+    $(".memdoc").addClass("panel-body");
+    </script>
+    <footer>
+      <div class="container">
+        <div class="text-muted" style="float:right;">Generated by <a href="http://www.doxygen.org/index.html">
+          <img style="height:18px;" class="footer-img" src="doxygen.png" alt="doxygen"></a> on Sat Dec 27 2025 17:53:21
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,481 @@
+\doxysection{gmsh\+\_\+read.\+h}
+\hypertarget{gmsh__read_8h_source}{}\label{gmsh__read_8h_source}\index{gmsh\_read.h@{gmsh\_read.h}}
+\mbox{\hyperlink{gmsh__read_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00001}00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00002}00002\ \textcolor{comment}{//\ Created\ by\ iqraa\ on\ 20-\/1-\/24.}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00003}00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00005}00005\ \textcolor{preprocessor}{\#ifndef\ READ\_GMSH\_H}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00006}00006\ \textcolor{preprocessor}{\#define\ READ\_GMSH\_H}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Vector_8h}{Vector.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00018}\mbox{\hyperlink{namespaceGMSH}{00018}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceGMSH}{GMSH}}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00019}00019\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00021}\mbox{\hyperlink{namespaceGMSH_aa6bd9074b5bb095c897c76f686ead87e}{00021}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespaceGMSH_aa6bd9074b5bb095c897c76f686ead87e}{small}}\ =\ std::numeric\_limits<double>::epsilon();}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00022}\mbox{\hyperlink{namespaceGMSH_a9193fd39275521351d3b2f60871aa94c}{00022}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespaceGMSH_a9193fd39275521351d3b2f60871aa94c}{vSmall}}=\ std::numeric\_limits<double>::min();}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00024}00024\ \ \ \ \ \textcolor{comment}{//\ default\ flag\ to\ initialize\ all\ the\ components\ of\ the\ structs}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00025}\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{00025}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00027}\mbox{\hyperlink{structGMSH_1_1Tuple}{00027}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structGMSH_1_1Tuple}{Tuple}}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00028}00028\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00029}\mbox{\hyperlink{structGMSH_1_1Tuple_ac9d9609905525af46051ce8642a37f9a}{00029}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGMSH_1_1Tuple_ac9d9609905525af46051ce8642a37f9a}{entityTag}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00030}\mbox{\hyperlink{structGMSH_1_1Tuple_af2bc064134ad68fb9887fcc5ec47ca0e}{00030}}\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{structGMSH_1_1Tuple_af2bc064134ad68fb9887fcc5ec47ca0e}{boundary}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00031}\mbox{\hyperlink{structGMSH_1_1Tuple_a157956045f1bf418d5daf2dff0c1401b}{00031}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGMSH_1_1Tuple_a157956045f1bf418d5daf2dff0c1401b}{EntityType}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00032}00032\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00034}\mbox{\hyperlink{structGMSH_1_1Boundary}{00034}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structGMSH_1_1Boundary}{Boundary}}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00035}00035\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00036}\mbox{\hyperlink{structGMSH_1_1Boundary_a5bc4727875ce5e3f0841c0d12aed732c}{00036}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGMSH_1_1Boundary_a5bc4727875ce5e3f0841c0d12aed732c}{dim}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00037}\mbox{\hyperlink{structGMSH_1_1Boundary_a2a0daecb02d5e755389025fe8e3ceb18}{00037}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGMSH_1_1Boundary_a2a0daecb02d5e755389025fe8e3ceb18}{tag}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00038}\mbox{\hyperlink{structGMSH_1_1Boundary_a6f5bfa207c49dc274a87e77501ca116a}{00038}}\ \ \ \ \ \ \ \ \ std::map<std::string,\ int>\ \mbox{\hyperlink{structGMSH_1_1Boundary_a6f5bfa207c49dc274a87e77501ca116a}{physicalNames}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00039}00039\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00040}00040\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00041}00041\ \textcolor{comment}{\ \ \ \ /*!\ \(\backslash\)brief:\ This\ for\ point\ entities.\ */}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00042}\mbox{\hyperlink{structGMSH_1_1Point}{00042}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structGMSH_1_1Point}{Point}}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00043}00043\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00044}\mbox{\hyperlink{structGMSH_1_1Point_a7ce40e8d56da13fb64256332a90f5e19}{00044}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGMSH_1_1Point_afa98a83b63f647d5b5cbf8aa2d3445ad}{pointTag}}=\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{structGMSH_1_1Point_a7ce40e8d56da13fb64256332a90f5e19}{numPhysicalTags}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00045}\mbox{\hyperlink{structGMSH_1_1Point_a79c59673bf807056558ba58fa9d4108f}{00045}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structGMSH_1_1Point_a79c59673bf807056558ba58fa9d4108f}{x}}=0.0,\ \mbox{\hyperlink{structGMSH_1_1Point_ae887c4f78558b34779b2ca1965146aba}{y}}=0.0,\ \mbox{\hyperlink{structGMSH_1_1Point_a9c19714ac575175e86c9c7bbe59da5cc}{z}}=0.0;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00046}\mbox{\hyperlink{structGMSH_1_1Point_a3959ddc771510a43c4d1aa0541b2c2c5}{00046}}\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{structGMSH_1_1Point_a3959ddc771510a43c4d1aa0541b2c2c5}{physicalTags}}\ =\ \{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}}\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00047}00047\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00048}00048\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00049}00049\ \textcolor{comment}{\ \ \ \ /*!\ \(\backslash\)brief:\ This\ for\ curve\ entities.\ */}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00050}\mbox{\hyperlink{structGMSH_1_1Curve}{00050}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structGMSH_1_1Curve}{Curve}}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00051}00051\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00052}\mbox{\hyperlink{structGMSH_1_1Curve_a805140c43d07d07d7c8999b25016a655}{00052}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGMSH_1_1Curve_a805140c43d07d07d7c8999b25016a655}{curveTag}}=\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{structGMSH_1_1Curve_a037dc1526d78995363685c28a5b97b16}{numPhysicalTags}}=\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00053}\mbox{\hyperlink{structGMSH_1_1Curve_a6ea972560bfba9d394fe2b22c8303d96}{00053}}\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{structGMSH_1_1Curve_a6ea972560bfba9d394fe2b22c8303d96}{physicalTags}}=\{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}}\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00054}\mbox{\hyperlink{structGMSH_1_1Curve_a958ec0905bd7f01f08e7e19e09e42012}{00054}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGMSH_1_1Curve_a958ec0905bd7f01f08e7e19e09e42012}{numBoundingPoints}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00055}\mbox{\hyperlink{structGMSH_1_1Curve_a7df14195b1504e4f9986f40c6cc8525c}{00055}}\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{structGMSH_1_1Curve_a7df14195b1504e4f9986f40c6cc8525c}{pointTags}}\ =\{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}}\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00056}00056\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00057}00057\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00058}00058\ \textcolor{comment}{\ \ \ \ /*!\ \(\backslash\)brief:\ This\ for\ surface\ entities.\ */}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00059}\mbox{\hyperlink{structGMSH_1_1Surface}{00059}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structGMSH_1_1Surface}{Surface}}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00060}00060\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00061}\mbox{\hyperlink{structGMSH_1_1Surface_aca8e90245ab004f6e872f89b7d020f5d}{00061}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGMSH_1_1Surface_a47523b2bbe17b13f831fb62d06294fe5}{surfaceTag}}=\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{structGMSH_1_1Surface_aca8e90245ab004f6e872f89b7d020f5d}{numPhysicalTags}}=\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00062}\mbox{\hyperlink{structGMSH_1_1Surface_affc5b16ac26b8297e7a9782d9fa7dce3}{00062}}\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{structGMSH_1_1Surface_affc5b16ac26b8297e7a9782d9fa7dce3}{physicalTags}}=\{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}}\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00063}\mbox{\hyperlink{structGMSH_1_1Surface_ae762a6ee3016f2effec03a2bc6b3757b}{00063}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGMSH_1_1Surface_ae762a6ee3016f2effec03a2bc6b3757b}{numBoundingCurves}}=\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00064}\mbox{\hyperlink{structGMSH_1_1Surface_af0c51cc4e92175b8c6c2362353777acb}{00064}}\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{structGMSH_1_1Surface_af0c51cc4e92175b8c6c2362353777acb}{curveTags}}=\{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}}\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00065}00065\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00066}00066\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00067}00067\ \textcolor{comment}{\ \ \ \ /*!\ \(\backslash\)brief:\ This\ for\ volume\ entities.\ */}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00068}\mbox{\hyperlink{structGMSH_1_1Volume}{00068}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structGMSH_1_1Volume}{Volume}}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00069}00069\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00070}\mbox{\hyperlink{structGMSH_1_1Volume_aa3e021a4c389731189a5aa58d1ffd34b}{00070}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGMSH_1_1Volume_ae35b12d5981f16d3388648d48905d639}{volumeTag}}=\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{structGMSH_1_1Volume_aa3e021a4c389731189a5aa58d1ffd34b}{numPhysicalTags}}=\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00071}\mbox{\hyperlink{structGMSH_1_1Volume_a4ad7b801654bda7ea9fb708658f62ba1}{00071}}\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{structGMSH_1_1Volume_a4ad7b801654bda7ea9fb708658f62ba1}{physicalTags}}=\{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}}\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00072}\mbox{\hyperlink{structGMSH_1_1Volume_aa01ddfd5e4203569042bdad27dfd0e9b}{00072}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGMSH_1_1Volume_aa01ddfd5e4203569042bdad27dfd0e9b}{numBoundingSurfaces}}=\ 6;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00073}\mbox{\hyperlink{structGMSH_1_1Volume_aa464735e27e3a8eb7d3ede4c47dc46f0}{00073}}\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{structGMSH_1_1Volume_aa464735e27e3a8eb7d3ede4c47dc46f0}{surfaceTags}}\ =\ \{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}}\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00074}00074\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00075}00075\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00076}00076\ \textcolor{comment}{\ \ \ \ /*!\ \(\backslash\)brief:\ This\ for\ the\ point\ entity\ of\ the\ entity\ mesh.\ */}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00077}\mbox{\hyperlink{structGMSH_1_1Vertex}{00077}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structGMSH_1_1Vertex}{Vertex}}\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00078}\mbox{\hyperlink{structGMSH_1_1Vertex_a5b961e489da3b9373463648683176be4}{00078}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGMSH_1_1Vertex_a5b961e489da3b9373463648683176be4}{entityDim}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{structGMSH_1_1Vertex_aaaa4ecad7cc5d4474163829b38e7606a}{entityTag}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{structGMSH_1_1Vertex_ae4d6f95f2eeafd792d84f22bcb55e34f}{parametric\_}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{structGMSH_1_1Vertex_a292b5adb11f2da8b22dac3753297a840}{numNodesInBlock}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00079}\mbox{\hyperlink{structGMSH_1_1Vertex_a921ea3431f2631ad589286c638b78fda}{00079}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGMSH_1_1Vertex_a921ea3431f2631ad589286c638b78fda}{nodeTag}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00080}\mbox{\hyperlink{structGMSH_1_1Vertex_a61e680956a8df0511a5adad6a53c675f}{00080}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structGMSH_1_1Vertex_a61e680956a8df0511a5adad6a53c675f}{x}}\ =\ 0.0,\ \mbox{\hyperlink{structGMSH_1_1Vertex_ae1e1877e47f8ccc6f6c183e6944bec32}{y}}\ =\ 0.0,\ \mbox{\hyperlink{structGMSH_1_1Vertex_ace0e3968ea93c8ef8823416b016e5765}{z}}\ =\ 0.0;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00081}\mbox{\hyperlink{structGMSH_1_1Vertex_a15265b6c12344d9560f603fc3d59f8c6}{00081}}\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{structGMSH_1_1Vertex_a15265b6c12344d9560f603fc3d59f8c6}{boundaries}}=\{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}}\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00082}00082\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00083}00083\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00084}00084\ \textcolor{comment}{\ \ \ \ /*!\ \(\backslash\)brief:\ This\ for\ elements\ including\ points,\ edges,\ quads\ and\ hex\ elements.\ */}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00085}\mbox{\hyperlink{structGMSH_1_1Element}{00085}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structGMSH_1_1Element}{Element}}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00086}00086\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00087}\mbox{\hyperlink{structGMSH_1_1Element_a2aeefbff5f127543a7bad328759903f8}{00087}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGMSH_1_1Element_a05d6e013698696665e3f2fd6e3c1a354}{entityDim}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{structGMSH_1_1Element_a6d63fddff813bde573ad3b420cdeeeb6}{entityTag}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{structGMSH_1_1Element_a2aeefbff5f127543a7bad328759903f8}{elementType}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{structGMSH_1_1Element_a1f45dfc5d4eafb70cb57896f66ef59ab}{numElementsInBlock}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00088}\mbox{\hyperlink{structGMSH_1_1Element_aa5a7383ac70198382dd3ab380de61113}{00088}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGMSH_1_1Element_aa5a7383ac70198382dd3ab380de61113}{elementTag}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00089}\mbox{\hyperlink{structGMSH_1_1Element_a226811534ff18a2cdb0cdddda798a69d}{00089}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGMSH_1_1Element_a226811534ff18a2cdb0cdddda798a69d}{nodeTag}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00090}\mbox{\hyperlink{structGMSH_1_1Element_ab0a6e264a9d11082e7c10b5b51ec25b4}{00090}}\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{structGMSH_1_1Element_ab0a6e264a9d11082e7c10b5b51ec25b4}{edgeTags}}\ =\ \{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}}\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00091}\mbox{\hyperlink{structGMSH_1_1Element_aaef1d3d895113eced2da63346cc77de2}{00091}}\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{structGMSH_1_1Element_aaef1d3d895113eced2da63346cc77de2}{quadTags}}\ =\ \{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}}\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00092}\mbox{\hyperlink{structGMSH_1_1Element_a5c8175fff5062fdc128af02fe15d1304}{00092}}\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{structGMSH_1_1Element_a5c8175fff5062fdc128af02fe15d1304}{hexTags}}\ \ =\ \{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}}\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00093}\mbox{\hyperlink{structGMSH_1_1Element_ac092f2af945435af995dc91a26631043}{00093}}\ \ \ \ \ \ \ \ \ std::set<int>\ \mbox{\hyperlink{structGMSH_1_1Element_ac092f2af945435af995dc91a26631043}{boundaries}}\ =\ \{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}}\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00094}00094\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00095}00095\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00096}00096\ \textcolor{comment}{\ \ \ \ /*!\ \(\backslash\)brief:\ This\ for\ actual\ node\ of\ the\ mesh.\ */}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00097}\mbox{\hyperlink{structGMSH_1_1Node}{00097}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structGMSH_1_1Node}{Node}}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00098}00098\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00099}\mbox{\hyperlink{structGMSH_1_1Node_ab04394a8ff81d9869b50cee11cf19e5b}{00099}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGMSH_1_1Node_ab04394a8ff81d9869b50cee11cf19e5b}{entityDim}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{structGMSH_1_1Node_a19d2ccef1cbd03341b2d37910973284c}{nodeTag}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{structGMSH_1_1Node_aac47e82fb1b59ac0b5b2ca617c564154}{entityTag}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00100}\mbox{\hyperlink{structGMSH_1_1Node_a7446ab548e3ab88ec172bbdee3425d3e}{00100}}\ \ \ \ \ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{structGMSH_1_1Node_a7446ab548e3ab88ec172bbdee3425d3e}{coord}}\ \{0.0,0.0,0.0\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00101}\mbox{\hyperlink{structGMSH_1_1Node_a3d07a84293b9ee9bee02f0d1574e661b}{00101}}\ \ \ \ \ \ \ \ \ std::set<int>\ \mbox{\hyperlink{structGMSH_1_1Node_a3d07a84293b9ee9bee02f0d1574e661b}{boundaries}}\ =\ \{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}}\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00102}00102\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00104}\mbox{\hyperlink{structGMSH_1_1Edge}{00104}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structGMSH_1_1Edge}{Edge}}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00105}00105\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00106}\mbox{\hyperlink{structGMSH_1_1Edge_ab128e47ebc884ba87e166ff7b97ac589}{00106}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGMSH_1_1Edge_ad98b3e82477ed5eb7a7d8b620d55df3d}{entityDim}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{structGMSH_1_1Edge_ad636a663865f7eec428b5ab011242796}{entityTag}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{structGMSH_1_1Edge_ab128e47ebc884ba87e166ff7b97ac589}{edgeTag}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00107}\mbox{\hyperlink{structGMSH_1_1Edge_a2d2eaf494461491df3624f0f419fa0c3}{00107}}\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{structGMSH_1_1Edge_a2d2eaf494461491df3624f0f419fa0c3}{nodesTag}}\ =\ \{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}}\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00108}\mbox{\hyperlink{structGMSH_1_1Edge_aa7dc74e132afe3c1b0482bf414c47d27}{00108}}\ \ \ \ \ \ \ \ \ std::set<int>\ \mbox{\hyperlink{structGMSH_1_1Edge_aa7dc74e132afe3c1b0482bf414c47d27}{boundaries}}\ =\ \{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}}\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00109}00109\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00111}\mbox{\hyperlink{structGMSH_1_1Quad}{00111}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structGMSH_1_1Quad}{Quad}}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00112}00112\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00113}\mbox{\hyperlink{structGMSH_1_1Quad_ad1543c63083f7307e7853f44071a3810}{00113}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGMSH_1_1Quad_ad1543c63083f7307e7853f44071a3810}{entityDim}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{structGMSH_1_1Quad_a5ab3790e980e65f45f1f8db4c3c30ed0}{entityTag}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \ \mbox{\hyperlink{structGMSH_1_1Quad_a250c19faec20593817b64e027b1e7ea8}{quadTag}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00114}\mbox{\hyperlink{structGMSH_1_1Quad_a5b6c5e69ffa223ce735bb767c938fe88}{00114}}\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{structGMSH_1_1Quad_a5b6c5e69ffa223ce735bb767c938fe88}{nodesTag}}\ =\ \{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}}\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00115}\mbox{\hyperlink{structGMSH_1_1Quad_a789e26803a6ad6bfa871a67f1742ce57}{00115}}\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{structGMSH_1_1Quad_a789e26803a6ad6bfa871a67f1742ce57}{edgesTag}}\ =\ \{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}}\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00116}\mbox{\hyperlink{structGMSH_1_1Quad_aa42bd536208a71690bf43a2d38f0cf88}{00116}}\ \ \ \ \ \ \ \ \ std::set<int>\ \mbox{\hyperlink{structGMSH_1_1Quad_aa42bd536208a71690bf43a2d38f0cf88}{boundaries}}=\{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}}\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00117}00117\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00119}\mbox{\hyperlink{structGMSH_1_1Hexa}{00119}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structGMSH_1_1Hexa}{Hexa}}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00120}00120\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00121}\mbox{\hyperlink{structGMSH_1_1Hexa_ab50af72bb5f0039774b9d166f5b7b28b}{00121}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structGMSH_1_1Hexa_ab50af72bb5f0039774b9d166f5b7b28b}{entityDim}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{structGMSH_1_1Hexa_a5bd9ae81641b9679e872e05457cf09e0}{entityTag}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \ \mbox{\hyperlink{structGMSH_1_1Hexa_a89a692c22eb8719b73f97e4688939694}{hexaTag}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00122}\mbox{\hyperlink{structGMSH_1_1Hexa_aa8eca87350442260e2ec8dec0bf6a455}{00122}}\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{structGMSH_1_1Hexa_aa8eca87350442260e2ec8dec0bf6a455}{nodesTag}}\ =\ \{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}}\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00123}\mbox{\hyperlink{structGMSH_1_1Hexa_a9873e019fcb175e37a5a1cca449dd0c6}{00123}}\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{structGMSH_1_1Hexa_a9873e019fcb175e37a5a1cca449dd0c6}{edgesTag}}\ =\ \{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}}\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00124}\mbox{\hyperlink{structGMSH_1_1Hexa_aa96d0ed70706743c4355d7f71c32bd34}{00124}}\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{structGMSH_1_1Hexa_aa96d0ed70706743c4355d7f71c32bd34}{quadsTag}}\ =\ \{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}},\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}}\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00125}\mbox{\hyperlink{structGMSH_1_1Hexa_a8d3b3a6e89212a42341e9494a5f695f1}{00125}}\ \ \ \ \ \ \ \ \ std::set<int>\ \mbox{\hyperlink{structGMSH_1_1Hexa_a8d3b3a6e89212a42341e9494a5f695f1}{boundaries}}\ =\ \{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}}\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00126}00126\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00128}00128\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00129}\mbox{\hyperlink{namespaceGMSH_ae733c71ae02adc5e1a5a76acf81f8055}{00129}}\ \ \ \ \ std::vector<T>\ \mbox{\hyperlink{namespaceGMSH_ae733c71ae02adc5e1a5a76acf81f8055}{operator+}}(\textcolor{keyword}{const}\ std::vector<T>\&\ lhs,\ \textcolor{keyword}{const}\ std::vector<T>\&\ rhs)\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00130}00130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (lhs.size()\ !=\ rhs.size())\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ Vector\ sizes\ do\ not\ match\ for\ addition."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::vector<T>();\ \textcolor{comment}{//\ Return\ an\ empty\ vector}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00133}00133\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00134}00134\ \ \ \ \ \ \ \ \ std::vector<T>\ result(lhs.size());}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00135}00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}\ =\ 0;\ \mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}\ <\ lhs.size();\ ++\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ result[\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}]\ =\ lhs[\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}]\ +\ rhs[\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}];}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00137}00137\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00138}00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00139}00139\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00141}00141\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00142}\mbox{\hyperlink{namespaceGMSH_a6495044c5a6e5d2e3cce43308345b62d}{00142}}\ \ \ \ \ std::vector<T>\ \mbox{\hyperlink{namespaceGMSH_a6495044c5a6e5d2e3cce43308345b62d}{operator-\/}}(\textcolor{keyword}{const}\ std::vector<T>\&\ lhs,\ \textcolor{keyword}{const}\ std::vector<T>\&\ rhs)\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (lhs.size()\ !=\ rhs.size())\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ Vector\ sizes\ do\ not\ match\ for\ subtraction."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::vector<T>();\ \textcolor{comment}{//\ Return\ an\ empty\ vector}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00146}00146\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00147}00147\ \ \ \ \ \ \ \ \ std::vector<T>\ result(lhs.size());}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00148}00148\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}\ =\ 0;\ \mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}\ <\ lhs.size();\ ++\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ result[\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}]\ =\ lhs[\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}]\ -\/\ rhs[\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}];}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00150}00150\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00151}00151\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00152}00152\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00154}00154\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00155}\mbox{\hyperlink{namespaceGMSH_af6e2afe07b9162ed7a34c78cab85e4c8}{00155}}\ \ \ \ \ std::vector<T>\ \mbox{\hyperlink{namespaceGMSH_af6e2afe07b9162ed7a34c78cab85e4c8}{operator*}}(\textcolor{keyword}{const}\ std::vector<T>\&\ vec,\ \textcolor{keyword}{const}\ T\&\ scalar)\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00156}00156\ \ \ \ \ \ \ \ \ std::vector<T>\ result(vec.size());}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00157}00157\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}\ =\ 0;\ \mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}\ <\ vec.size();\ ++\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ result[\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}]\ =\ vec[\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}]\ *\ scalar;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00159}00159\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00160}00160\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00161}00161\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00163}00163\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00164}\mbox{\hyperlink{namespaceGMSH_a6f6d7faf583bb5d68822e8658385ac20}{00164}}\ \ \ \ \ std::vector<T>\ \mbox{\hyperlink{namespaceGMSH_af6e2afe07b9162ed7a34c78cab85e4c8}{operator*}}(\textcolor{keyword}{const}\ T\&\ scalar,\ \textcolor{keyword}{const}\ std::vector<T>\&\ vec)\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00165}00165\ \ \ \ \ \ \ \ \ std::vector<T>\ result(vec.size());}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00166}00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}\ =\ 0;\ \mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}\ <\ vec.size();\ ++\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ result[\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}]\ =\ vec[\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}]\ *\ scalar;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00168}00168\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00169}00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00170}00170\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00172}00172\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00173}\mbox{\hyperlink{namespaceGMSH_a5e63f20f6b416141e07d0aa389763da3}{00173}}\ \ \ \ \ std::vector<T>\ \mbox{\hyperlink{namespaceGMSH_a5e63f20f6b416141e07d0aa389763da3}{operator/}}(\textcolor{keyword}{const}\ std::vector<T>\&\ vec,\ \textcolor{keyword}{const}\ T\&\ scalar)\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00174}00174\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (scalar\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\ \textcolor{stringliteral}{"{}Error:\ Division\ by\ zero."{}});}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00176}00176\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00177}00177\ \ \ \ \ \ \ \ \ std::vector<T>\ result(vec.size());}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00178}00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}\ =\ 0;\ \mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}\ <\ vec.size();\ ++\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ result[\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}]\ =\ vec[\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}]\ /\ scalar;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00180}00180\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00181}00181\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00182}00182\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00184}00184\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00185}\mbox{\hyperlink{namespaceGMSH_a4e9fbd1c302c53682892dfa89b058972}{00185}}\ \ \ \ \ std::vector<T>\ \mbox{\hyperlink{namespaceGMSH_a5e63f20f6b416141e07d0aa389763da3}{operator/}}(\textcolor{keyword}{const}\ T\&\ scalar,\ \textcolor{keyword}{const}\ std::vector<T>\&\ vec)\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00186}00186\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (scalar\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\ \textcolor{stringliteral}{"{}Error:\ Division\ by\ zero."{}});}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00188}00188\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00189}00189\ \ \ \ \ \ \ \ \ std::vector<T>\ result(vec.size());}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00190}00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}\ =\ 0;\ \mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}\ <\ vec.size();\ ++\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ result[\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}]\ =\ vec[\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}]\ /\ scalar;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00192}00192\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00193}00193\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00194}00194\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00196}00196\ \textcolor{comment}{//\ Overloading\ compound\ assignment\ operators}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00197}00197\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00198}\mbox{\hyperlink{namespaceGMSH_a4ba5b5b54c0a8782d9d589c3f0db8903}{00198}}\ \ \ \ \ std::vector<T>\&\ \mbox{\hyperlink{namespaceGMSH_a4ba5b5b54c0a8782d9d589c3f0db8903}{operator+=}}(std::vector<T>\&\ lhs,\ \textcolor{keyword}{const}\ std::vector<T>\&\ rhs)\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00199}00199\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (lhs.size()\ !=\ rhs.size())\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\ \textcolor{stringliteral}{"{}Error:\ Vector\ sizes\ do\ not\ match\ for\ addition."{}});}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00201}00201\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00202}00202\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}\ =\ 0;\ \mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}\ <\ lhs.size();\ ++\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ lhs[\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}]\ +=\ rhs[\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}];}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00204}00204\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00205}00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lhs;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00206}00206\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00208}00208\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00209}\mbox{\hyperlink{namespaceGMSH_a45326598fe7e50a609e2cf6d6a46736c}{00209}}\ \ \ \ \ std::vector<T>\&\ \mbox{\hyperlink{namespaceGMSH_a45326598fe7e50a609e2cf6d6a46736c}{operator-\/=}}(std::vector<T>\&\ lhs,\ \textcolor{keyword}{const}\ std::vector<T>\&\ rhs)\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00210}00210\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (lhs.size()\ !=\ rhs.size())\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\ \textcolor{stringliteral}{"{}Error:\ Vector\ sizes\ do\ not\ match\ for\ subtraction."{}}\ );}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00212}00212\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00213}00213\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}\ =\ 0;\ \mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}\ <\ lhs.size();\ ++\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ lhs[\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}]\ -\/=\ rhs[\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}];}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00215}00215\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00216}00216\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lhs;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00217}00217\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00219}00219\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00220}\mbox{\hyperlink{namespaceGMSH_aec7d691446eaf5ea12fb4d1a668a046d}{00220}}\ \ \ \ \ std::vector<T>\&\ \mbox{\hyperlink{namespaceGMSH_aec7d691446eaf5ea12fb4d1a668a046d}{operator/=}}(std::vector<T>\&\ vec,\ \textcolor{keyword}{const}\ T\&\ scalar)\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00221}00221\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (scalar\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Error:\ Division\ by\ zero."{}}\ );}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00223}00223\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00224}00224\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}\ =\ 0;\ \mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}\ <\ vec.size();\ ++\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ vec[\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}]\ /=\ scalar;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00226}00226\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00227}00227\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ vec;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00228}00228\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00231}00231\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00232}\mbox{\hyperlink{namespaceGMSH_a037cd74ac8e42d434c39b93ad3dfb210}{00232}}\ \ \ \ \ std::vector<T>\ \mbox{\hyperlink{namespaceGMSH_a037cd74ac8e42d434c39b93ad3dfb210}{operator\string^}}(\textcolor{keyword}{const}\ std::vector<T>\&\ lhs,\ \textcolor{keyword}{const}\ std::vector<T>\&\ rhs)}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00233}00233\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00234}00234\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (lhs.size()\ !=\ rhs.size())\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Vectors\ must\ have\ the\ same\ dimensionality\ for\ cross\ product."{}});}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00236}00236\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00237}00237\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00238}00238\ \ \ \ \ \ \ \ \ std::vector<T>\ result(lhs.size());}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00239}00239\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00240}00240\ \ \ \ \ \ \ \ \ result[0]\ =\ lhs[1]\ *\ rhs[2]\ -\/\ lhs[2]\ *\ rhs[1];}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00241}00241\ \ \ \ \ \ \ \ \ result[1]\ =\ lhs[2]\ *\ rhs[0]\ -\/\ lhs[0]\ *\ rhs[2];}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00242}00242\ \ \ \ \ \ \ \ \ result[2]\ =\ lhs[0]\ *\ rhs[1]\ -\/\ lhs[1]\ *\ rhs[0];}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00244}00244\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00245}00245\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00246}00246\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00248}00248\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00249}\mbox{\hyperlink{namespaceGMSH_a3878ff2c976a8267317077922f818421}{00249}}\ \ \ \ \ T\ \mbox{\hyperlink{namespaceGMSH_a3878ff2c976a8267317077922f818421}{operator\&}}(\textcolor{keyword}{const}\ std::vector<T>\&\ lhs,\ \textcolor{keyword}{const}\ std::vector<T>\&\ rhs)}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00250}00250\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00251}00251\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (lhs.size()\ !=\ rhs.size())\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Vectors\ must\ have\ the\ same\ length\ for\ dot\ product."{}});}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00253}00253\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00254}00254\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00255}00255\ \ \ \ \ \ \ \ \ T\ result\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00257}00257\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ n\ =\ lhs.size();}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00258}00258\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00259}00259\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}\ =\ 0;\ \mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}\ <\ n;\ ++\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}})\ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ result\ +=\ lhs[\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}]\ *\ rhs[\mbox{\hyperlink{cfortran_8h_adb50e893b86b3e55e751a42eab3cba82}{i}}];}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00261}00261\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00262}00262\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00263}00263\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00264}00264\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00266}00266\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00267}\mbox{\hyperlink{namespaceGMSH_a178abcbb9a2f0e2dc52d2ad3ae2e65b5}{00267}}\ \ \ \ \ T\ \mbox{\hyperlink{namespaceGMSH_a178abcbb9a2f0e2dc52d2ad3ae2e65b5}{mag}}(\textcolor{keyword}{const}\ std::vector<T>\&\ vec)}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00268}00268\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00269}00269\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::sqrt(vec\ \&\ vec);}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00270}00270\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00271}00271\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00272}00272\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00273}\mbox{\hyperlink{namespaceGMSH_a126141cba6c588a2520daf3f49eb638d}{00273}}\ \ \ \ \ T\ \mbox{\hyperlink{namespaceGMSH_a178abcbb9a2f0e2dc52d2ad3ae2e65b5}{mag}}(\textcolor{keyword}{const}\ std::vector<T>\&\ veca,\ \textcolor{keyword}{const}\ std::vector<T>\&\ vecb)}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00274}00274\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00275}00275\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::sqrt(veca\ \&\ vecb);}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00276}00276\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00277}00277\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00278}\mbox{\hyperlink{classGMSH_1_1Gmsh}{00278}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGMSH_1_1Gmsh}{Gmsh}}\ \ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00279}00279\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00280}\mbox{\hyperlink{classGMSH_1_1Gmsh_a54e8f81311f77b2c28c8594f8aa89d63}{00280}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGMSH_1_1Gmsh_a54e8f81311f77b2c28c8594f8aa89d63}{Gmsh}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00281}00281\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00282}00282\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a54e8f81311f77b2c28c8594f8aa89d63}{Gmsh}}(\textcolor{keyword}{const}\ std::string\ \&filename,\ \textcolor{keywordtype}{bool}\ verbose=\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00283}00283\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00284}00284\ \textcolor{comment}{\ \ \ \ \ \ \ \ ///\ No\ copy}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00285}\mbox{\hyperlink{classGMSH_1_1Gmsh_a0b90f4a6b364c81b9ce389961f61e8aa}{00285}}\ \textcolor{comment}{}\ \ \ \ \ \ \ \ \mbox{\hyperlink{classGMSH_1_1Gmsh_a0b90f4a6b364c81b9ce389961f61e8aa}{Gmsh}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classGMSH_1_1Gmsh}{Gmsh}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00286}00286\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00287}00287\ \textcolor{comment}{\ \ \ \ \ \ \ \ ///\ No\ move}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00288}\mbox{\hyperlink{classGMSH_1_1Gmsh_a7f8131190ebaa9fd375f6305805ceb2c}{00288}}\ \textcolor{comment}{}\ \ \ \ \ \ \ \ \mbox{\hyperlink{classGMSH_1_1Gmsh_a7f8131190ebaa9fd375f6305805ceb2c}{Gmsh}}(\mbox{\hyperlink{classGMSH_1_1Gmsh}{Gmsh}}\ \&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00289}00289\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00290}00290\ \textcolor{comment}{\ \ \ \ \ \ \ \ ///\ No\ move\ assignment}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00291}\mbox{\hyperlink{classGMSH_1_1Gmsh_ac787392fd48ab89ec508084766b143b2}{00291}}\ \textcolor{comment}{}\ \ \ \ \ \ \ \ \mbox{\hyperlink{classGMSH_1_1Gmsh}{Gmsh}}\ \&\mbox{\hyperlink{classGMSH_1_1Gmsh_ac787392fd48ab89ec508084766b143b2}{operator=}}(\mbox{\hyperlink{classGMSH_1_1Gmsh}{Gmsh}}\ \&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00292}00292\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00293}00293\ \textcolor{comment}{\ \ \ \ \ \ \ \ ///\ Destructor}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00294}\mbox{\hyperlink{classGMSH_1_1Gmsh_aeb565322d0f702fb85c79e8362d13f5b}{00294}}\ \textcolor{comment}{}\ \ \ \ \ \ \ \ \mbox{\hyperlink{classGMSH_1_1Gmsh_aeb565322d0f702fb85c79e8362d13f5b}{\string~Gmsh}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00295}00295\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00296}00296\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Node>\&\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a2769fe4185103a84106bfe431ea6768b}{getNodes}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00297}00297\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00298}\mbox{\hyperlink{classGMSH_1_1Gmsh_aff91696be8431773a33b73f159b49adf}{00298}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{structGMSH_1_1Node}{Node}}\&\ \mbox{\hyperlink{classGMSH_1_1Gmsh_aff91696be8431773a33b73f159b49adf}{getNode}}(\textcolor{keywordtype}{size\_t}\ n)\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a9dcca103137edc18b11253b45d8be2d1}{nodes}}[n];\}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00299}00299\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00300}00300\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Edge>\&\ \mbox{\hyperlink{classGMSH_1_1Gmsh_abbc86eca2f6dd9ed728e3719580f8a73}{getEdges}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00301}\mbox{\hyperlink{classGMSH_1_1Gmsh_a5439cd9fffcdcee6b28f18b6acd8e0ee}{00301}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structGMSH_1_1Edge}{Edge}}\&\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a5439cd9fffcdcee6b28f18b6acd8e0ee}{getEdge}}(\textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{cfortran_8h_a37cd013acc76697829c324bdd8562d82}{e}})\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_aa53b04c1b8f0035e84af84d16ab89918}{edges}}[\mbox{\hyperlink{cfortran_8h_a37cd013acc76697829c324bdd8562d82}{e}}];\}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00302}00302\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00303}00303\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Quad>\&\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a58eb3168c29c605e43e9d014a2703149}{getQuads}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00304}\mbox{\hyperlink{classGMSH_1_1Gmsh_a8da86b54e6c5b6a3eaccae09dc5ff354}{00304}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structGMSH_1_1Quad}{Quad}}\&\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a8da86b54e6c5b6a3eaccae09dc5ff354}{getQuad}}(\textcolor{keywordtype}{size\_t}\ q)\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a5318d4f7ecf50e983fa3f367c55ca519}{quads}}[q];\}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00305}00305\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00306}00306\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Hexa>\&\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a00ffa1cd03642eba3763abb6b59de1b4}{getHexas}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00307}\mbox{\hyperlink{classGMSH_1_1Gmsh_a486726479a90dd4b1b6901cc2ff151c3}{00307}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structGMSH_1_1Hexa}{Hexa}}\&\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a486726479a90dd4b1b6901cc2ff151c3}{getHexa}}(\textcolor{keywordtype}{size\_t}\ h)\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a6a726254b81f26fd3f4754a67ce09937}{hexas}}[h];\}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00308}00308\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00309}00309\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::vector<Quad>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a1c03fd6ec6dbb99c75926115028860a3}{getFaces}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structGMSH_1_1Hexa}{Hexa}}\&\ hexa);}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00310}00310\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00311}00311\ \textcolor{comment}{\ \ \ \ \ \ \ \ ///\ Getters}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00312}00312\ \textcolor{comment}{}\ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_af327da1e8a8584b45073e6d2cbe34414}{getBoundSize}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00313}00313\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00314}00314\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a268e659811d6c5c8c155fcb431b1817c}{getNodesSize}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00315}00315\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00316}00316\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a435c3c18218e805a7a1c64d9e83cfb89}{getEdgesSize}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00317}00317\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00318}00318\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a8b748ebb5a258c7e7502b83f67adb5fa}{getQuadsSize}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00319}00319\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00320}00320\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_ac1881afde31221c7ae68c06c5c811a0d}{getHexasSize}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00321}00321\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00322}00322\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a51c12d53012b41a43c908cf879add7d0}{getMeshDim}}\ ()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00324}00324\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_ac05da7dc67af795a062a557a7b052030}{getNodesPerElement}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00325}00325\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00326}00326\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_acb6e68075bdb78efbf9a553c44015ab0}{getEdgesPerElement}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00327}00327\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00328}00328\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a9aa707e317e69e272978dc4dc1c10f94}{getFacesPerElement}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00329}00329\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00330}00330\ \textcolor{comment}{\ \ \ \ \ \ \ \ ///\ \(\backslash\)brief:\ INFO}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00331}00331\ \textcolor{comment}{}\ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a83472230f18943bec77142f4ca7d58ff}{printInfo}}(\textcolor{keywordtype}{bool});}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00332}00332\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00333}00333\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a22fbc3b03c1ff5c982426498c76c3a30}{nodesInfo}}();}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00334}00334\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00335}00335\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a2ffeec070105a49580f7cb0089d8e7e0}{edgesInfo}}();}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00337}00337\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_ace11e02242d527a24b1b0adcdf18bbb2}{quadsInfo}}();}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00338}00338\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00339}00339\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a46fe2d9e4fc82e53b40b26659a57fc3b}{hexasInfo}}();}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00340}00340\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00341}\mbox{\hyperlink{classGMSH_1_1Gmsh_ade5b4003d9c184ff0d6bd8625c0e46b6}{00341}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_ade5b4003d9c184ff0d6bd8625c0e46b6}{getBoundaryId}}(\textcolor{keyword}{const}\ std::string\&\ bName);}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00342}00342\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00343}\mbox{\hyperlink{classGMSH_1_1Gmsh_a487927a7168503b828f541392cea3de0}{00343}}\ \ \ \ \ \ \ \ \ std::vector<Boundary>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a487927a7168503b828f541392cea3de0}{boundaries}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00344}00344\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00345}\mbox{\hyperlink{classGMSH_1_1Gmsh_ae62ca15d8ecf336d707fe8fc3d95a129}{00345}}\ \ \ \ \ \ \ \ \ std::unordered\_map<int,\ int>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_ae62ca15d8ecf336d707fe8fc3d95a129}{orderedBC}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00346}00346\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00347}00347\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a2accfee53006cc45dc0af2904ab63e71}{inList}}(std::vector<int>\&\ q,\ std::vector<Edge>\&\ E);}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00348}00348\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00349}00349\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a2accfee53006cc45dc0af2904ab63e71}{inList}}(std::vector<int>\&\ q,\ std::vector<Quad>\&\ Q);}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00350}00350\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00351}00351\ \textcolor{comment}{\ \ \ \ \ \ \ \ /*!\ \(\backslash\)brief:\ collect\ nodes\ */}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00352}00352\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a4a8f31b86bb1957878624dd8e997c93c}{collectNodes}}();}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00353}00353\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00354}00354\ \textcolor{comment}{\ \ \ \ \ \ \ \ /*!\ \(\backslash\)brief:\ collect\ the\ edges\ into\ a\ vector\ of\ nodes\ tags*/}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00355}00355\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a175518e1a2660585e04ad53c6b55de26}{collectEdges}}();}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00356}00356\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00357}00357\ \textcolor{comment}{\ \ \ \ \ \ \ \ /*!\ \(\backslash\)brief:\ collect\ quadrilateral\ elements\ into\ vector\ of\ tags\ and\ ids*/}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00358}00358\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a8e60e4986b6ce0fe299889de80e2b698}{collectQuads}}();}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00359}00359\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00360}00360\ \textcolor{comment}{\ \ \ \ \ \ \ \ /*!\ \(\backslash\)brief:\ collect\ hexahedrals\ elements\ into\ vector\ of\ tags\ and\ ids*/}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00361}00361\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a0c712533d2baa55fe7bc43b25fb90a30}{collectHexas}}();}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00362}00362\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00363}00363\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a8b2e8251ac21b8ce899e74f6c6cca734}{addMissingEdge}}(\mbox{\hyperlink{structGMSH_1_1Quad}{Quad}}\&\ quad);}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00364}00364\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00365}00365\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_ac3248464f03593d952830be96edc42a3}{addMissingQuad}}(\mbox{\hyperlink{structGMSH_1_1Hexa}{Hexa}}\&\ hex);}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00366}00366\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00367}00367\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a504b814c1c919248950f393060c10342}{kernel}}();}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00368}00368\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00369}00369\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a589150c180ba1bd9fd3c0138e1dea0bb}{fillInTags}}(\mbox{\hyperlink{structGMSH_1_1Hexa}{Hexa}}\&\ hexa);}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00370}00370\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00371}00371\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a589150c180ba1bd9fd3c0138e1dea0bb}{fillInTags}}(\mbox{\hyperlink{structGMSH_1_1Quad}{Quad}}\&\ quad);}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00372}00372\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00373}00373\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a84f25f001bef11038d2e2ddc6ae5a29a}{addInternalEdge}}(std::vector<int>\&\ line);}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00374}00374\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00375}00375\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_ae691de82d28a710042f9f92121169ca5}{addInternalQuad}}(std::vector<int>\&\ face);}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00376}00376\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00377}00377\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a04791a1fe0bca480a4f10e331b2f79bb}{renumber}}();}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00378}00378\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00379}00379\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a49c8d7d0aa767779153964b913ccfe26}{areSimilar}}(std::vector<int>\ a,\ std::vector<int>\ b);}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00380}00380\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00381}00381\ \textcolor{comment}{\ \ \ \ \ \ \ \ /*!@brief:}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00382}00382\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ get\ the\ dimension\ and\ the\ tag\ of\ the\ boundary}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00383}00383\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ @param\ [in]\ boundary}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00384}00384\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ @param\ [out]\ DimsAndTags}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00385}00385\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ */}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00386}00386\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a1ce1bba6bb884162cd07467f5cdc7f4f}{entityTagToBoundaries}}();}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00387}00387\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00388}00388\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_ad4c71a41bab5a75f52b3e3e056cafe81}{renumberBCondition}}();}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00389}00389\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00390}00390\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_acdcc5ce1fc03f9e39cc715b0eff14873}{correctOrientation}}(\ \mbox{\hyperlink{structGMSH_1_1Quad}{Quad}}\ \&quad);}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00391}00391\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00392}00392\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_acdcc5ce1fc03f9e39cc715b0eff14873}{correctOrientation}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structGMSH_1_1Hexa}{Hexa}}\&\ hex);}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00393}00393\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00394}00394\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::vector<Edge>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_abbc86eca2f6dd9ed728e3719580f8a73}{getEdges}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structGMSH_1_1Quad}{Quad}}\&\ quad);}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00395}00395\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00396}00396\ \ \ \ \ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a0efc7d08b7a3686c485959da91842623}{getCenter}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structGMSH_1_1Hexa}{Hexa}}\&\ hex);}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00397}00397\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00398}00398\ \ \ \ \ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a0efc7d08b7a3686c485959da91842623}{getCenter}}(\textcolor{keyword}{const}\ std::vector<int>\&\ nodesTag);}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00399}00399\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00400}00400\ \ \ \ \ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a800adb8990eafecba1d812cf040bc9fa}{getArea}}(\textcolor{keyword}{const}\ std::vector<int>\&\ points);}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00401}00401\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00402}00402\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00403}00403\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00404}00404\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ flag\ to\ show\ all\ info}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00405}\mbox{\hyperlink{classGMSH_1_1Gmsh_ae31bb4aaa78813aabee84b6c8b12e26f}{00405}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_ae31bb4aaa78813aabee84b6c8b12e26f}{verbose\_}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00406}00406\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00407}\mbox{\hyperlink{classGMSH_1_1Gmsh_aaee718bd4769591b7d1f230fce747a08}{00407}}\ \ \ \ \ \ \ \ \ std::ifstream\ \mbox{\hyperlink{classGMSH_1_1Gmsh_aaee718bd4769591b7d1f230fce747a08}{mshFile}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00408}\mbox{\hyperlink{classGMSH_1_1Gmsh_a9d7b8eb3425c929e6608b23abb91e7bc}{00408}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a9d7b8eb3425c929e6608b23abb91e7bc}{minNodeTag}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00409}\mbox{\hyperlink{classGMSH_1_1Gmsh_a9c662657aee09f528f7e5e13c7b4110f}{00409}}\ \ \ \ \ \ \ \ \ std::vector<bool>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a9c662657aee09f528f7e5e13c7b4110f}{found4}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00410}\mbox{\hyperlink{classGMSH_1_1Gmsh_a3e1a04319acd317d67eb4ca7484266a6}{00410}}\ \ \ \ \ \ \ \ \ std::vector<bool>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a3e1a04319acd317d67eb4ca7484266a6}{found2}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00411}\mbox{\hyperlink{classGMSH_1_1Gmsh_a1430b934621dd2d254f1a6d882095b74}{00411}}\ \ \ \ \ \ \ \ \ std::vector<bool>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a1430b934621dd2d254f1a6d882095b74}{found20}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00412}00412\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00413}00413\ \textcolor{comment}{\ \ \ \ \ \ \ \ ///\ Entities}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00414}\mbox{\hyperlink{classGMSH_1_1Gmsh_acca6653b342979c48484a55ca99600f7}{00414}}\ \textcolor{comment}{}\ \ \ \ \ \ \ \ std::vector<Point>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_acca6653b342979c48484a55ca99600f7}{pEntities}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00415}\mbox{\hyperlink{classGMSH_1_1Gmsh_a65c3bdf113ae2729e030e3ceb60d8a9f}{00415}}\ \ \ \ \ \ \ \ \ std::vector<Curve>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a65c3bdf113ae2729e030e3ceb60d8a9f}{cEntities}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00416}\mbox{\hyperlink{classGMSH_1_1Gmsh_a771d320280219fc60e05264bd52d8ca7}{00416}}\ \ \ \ \ \ \ \ \ std::vector<Surface>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a771d320280219fc60e05264bd52d8ca7}{sEntities}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00417}\mbox{\hyperlink{classGMSH_1_1Gmsh_af1e26d7235647f6129943df41ca4c2ca}{00417}}\ \ \ \ \ \ \ \ \ std::vector<Volume>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_af1e26d7235647f6129943df41ca4c2ca}{vEntities}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00418}00418\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00419}00419\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00420}00420\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00421}00421\ \textcolor{comment}{\ \ \ \ \ \ \ \ ///\ Vertex,\ and\ Elements}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00422}\mbox{\hyperlink{classGMSH_1_1Gmsh_ae2f3e2e85248a0b6e99a6182bdcd5247}{00422}}\ \textcolor{comment}{}\ \ \ \ \ \ \ \ std::vector<Vertex>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_ae2f3e2e85248a0b6e99a6182bdcd5247}{vertices}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00423}\mbox{\hyperlink{classGMSH_1_1Gmsh_a2a6a7d28efdca47883f508524c67c25d}{00423}}\ \ \ \ \ \ \ \ \ std::vector<Element>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a2a6a7d28efdca47883f508524c67c25d}{elements}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00424}00424\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00425}00425\ \textcolor{comment}{\ \ \ \ \ \ \ \ ///}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00426}\mbox{\hyperlink{classGMSH_1_1Gmsh_a9dcca103137edc18b11253b45d8be2d1}{00426}}\ \textcolor{comment}{}\ \ \ \ \ \ \ \ std::vector<Node>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a9dcca103137edc18b11253b45d8be2d1}{nodes}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00427}\mbox{\hyperlink{classGMSH_1_1Gmsh_aa53b04c1b8f0035e84af84d16ab89918}{00427}}\ \ \ \ \ \ \ \ \ std::vector<Edge>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_aa53b04c1b8f0035e84af84d16ab89918}{edges}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00428}\mbox{\hyperlink{classGMSH_1_1Gmsh_a5318d4f7ecf50e983fa3f367c55ca519}{00428}}\ \ \ \ \ \ \ \ \ std::vector<Quad>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a5318d4f7ecf50e983fa3f367c55ca519}{quads}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00429}\mbox{\hyperlink{classGMSH_1_1Gmsh_a6a726254b81f26fd3f4754a67ce09937}{00429}}\ \ \ \ \ \ \ \ \ std::vector<Hexa>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a6a726254b81f26fd3f4754a67ce09937}{hexas}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00430}\mbox{\hyperlink{classGMSH_1_1Gmsh_a0fa86ee35837bf21e426d022c70580ae}{00430}}\ \ \ \ \ \ \ \ \ std::vector<Quad>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a0fa86ee35837bf21e426d022c70580ae}{quadList}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00431}\mbox{\hyperlink{classGMSH_1_1Gmsh_adfd10ce83b56db395860ea8d093b44eb}{00431}}\ \ \ \ \ \ \ \ \ std::vector<Edge>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_adfd10ce83b56db395860ea8d093b44eb}{edgeList}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00432}00432\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00433}00433\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ internal\ added\ new\ quads\ and\ edges}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00434}\mbox{\hyperlink{classGMSH_1_1Gmsh_adecc8cf22babcb61e3bcb9f3516f7f87}{00434}}\ \ \ \ \ \ \ \ \ std::vector<std::vector<int>>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_adecc8cf22babcb61e3bcb9f3516f7f87}{fourNodesList}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00435}\mbox{\hyperlink{classGMSH_1_1Gmsh_a090ae60e0cb8cb22cbbaa80bc4e80cc3}{00435}}\ \ \ \ \ \ \ \ \ std::vector<std::vector<int>>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a090ae60e0cb8cb22cbbaa80bc4e80cc3}{commonInternalEdges}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00436}\mbox{\hyperlink{classGMSH_1_1Gmsh_a6a5de499ad85bee8842ae45f705630f7}{00436}}\ \ \ \ \ \ \ \ \ std::vector<std::vector<int>>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a6a5de499ad85bee8842ae45f705630f7}{twoNodesList}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00437}\mbox{\hyperlink{classGMSH_1_1Gmsh_aa46b44206b7d85762199b83b9bfbab5e}{00437}}\ \ \ \ \ \ \ \ \ std::vector<std::vector<int>>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_aa46b44206b7d85762199b83b9bfbab5e}{internalQuads}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00438}00438\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00439}00439\ \textcolor{comment}{\ \ \ \ \ \ \ \ ///\ Element\ types}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00440}\mbox{\hyperlink{classGMSH_1_1Gmsh_a617b447f47794bbc13350cbb613ec0ab}{00440}}\ \textcolor{comment}{}\ \ \ \ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a617b447f47794bbc13350cbb613ec0ab}{ElementType}}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00441}00441\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00442}\mbox{\hyperlink{classGMSH_1_1Gmsh_a617b447f47794bbc13350cbb613ec0aba3b6ddc7c50e5f4d2edab924d93f83ce9}{00442}}\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGMSH_1_1Gmsh_a617b447f47794bbc13350cbb613ec0aba3b6ddc7c50e5f4d2edab924d93f83ce9}{Vertex\_}}\ =\ 15,\ \textcolor{comment}{//\ point}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00443}\mbox{\hyperlink{classGMSH_1_1Gmsh_a617b447f47794bbc13350cbb613ec0aba46fe85d73221a8f7311aed2713c13ed5}{00443}}\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGMSH_1_1Gmsh_a617b447f47794bbc13350cbb613ec0aba46fe85d73221a8f7311aed2713c13ed5}{Line\_}}\ =\ 1,\ \ \ \ \textcolor{comment}{//\ edge}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00444}\mbox{\hyperlink{classGMSH_1_1Gmsh_a617b447f47794bbc13350cbb613ec0aba2bb62b2f8cb0ddabdda92b5345df795e}{00444}}\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGMSH_1_1Gmsh_a617b447f47794bbc13350cbb613ec0aba2bb62b2f8cb0ddabdda92b5345df795e}{Quadrilateral\_}}\ =\ 3,\ \textcolor{comment}{//\ face}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00445}\mbox{\hyperlink{classGMSH_1_1Gmsh_a617b447f47794bbc13350cbb613ec0aba929150f96bf0dfa05d8d3640501f5ade}{00445}}\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGMSH_1_1Gmsh_a617b447f47794bbc13350cbb613ec0aba929150f96bf0dfa05d8d3640501f5ade}{Hexahedral\_}}\ =\ 5\ ,\textcolor{comment}{//\ brick}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00446}\mbox{\hyperlink{classGMSH_1_1Gmsh_a617b447f47794bbc13350cbb613ec0aba61147aff9ced2381663403710bc56b4b}{00446}}\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGMSH_1_1Gmsh_a617b447f47794bbc13350cbb613ec0aba61147aff9ced2381663403710bc56b4b}{Line2ndOrder\_}}\ =\ 8,}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00447}\mbox{\hyperlink{classGMSH_1_1Gmsh_a617b447f47794bbc13350cbb613ec0aba4fc0ab49a247d9ed5205437fd1fe23e7}{00447}}\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGMSH_1_1Gmsh_a617b447f47794bbc13350cbb613ec0aba4fc0ab49a247d9ed5205437fd1fe23e7}{Quadrilateral2ndOrder\_}}\ =\ 10,}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00448}00448\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGMSH_1_1Gmsh_a617b447f47794bbc13350cbb613ec0abaa36712ec5e05615e540ed815a822d1aa}{Hexahedral2ndOrder\_}}\ =\ 12}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00449}\mbox{\hyperlink{classGMSH_1_1Gmsh_a617b447f47794bbc13350cbb613ec0abaa36712ec5e05615e540ed815a822d1aa}{00449}}\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00450}00450\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00451}\mbox{\hyperlink{classGMSH_1_1Gmsh_a53440e1a20883ffff18da5083d9b44d4}{00451}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a53440e1a20883ffff18da5083d9b44d4}{EntityType}}\{}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00452}\mbox{\hyperlink{classGMSH_1_1Gmsh_a53440e1a20883ffff18da5083d9b44d4a4e821155c33e0b498d2733e6552e6665}{00452}}\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGMSH_1_1Gmsh_a53440e1a20883ffff18da5083d9b44d4a4e821155c33e0b498d2733e6552e6665}{Point\_}}\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00453}\mbox{\hyperlink{classGMSH_1_1Gmsh_a53440e1a20883ffff18da5083d9b44d4af30751418a745d023cf2ae13b5d73ab9}{00453}}\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGMSH_1_1Gmsh_a53440e1a20883ffff18da5083d9b44d4af30751418a745d023cf2ae13b5d73ab9}{Curve\_}}\ =\ 1,}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00454}\mbox{\hyperlink{classGMSH_1_1Gmsh_a53440e1a20883ffff18da5083d9b44d4ac0d994d17d79969de2bc83cf617b6044}{00454}}\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGMSH_1_1Gmsh_a53440e1a20883ffff18da5083d9b44d4ac0d994d17d79969de2bc83cf617b6044}{Surface\_}}\ =\ 2,}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00455}00455\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classGMSH_1_1Gmsh_a53440e1a20883ffff18da5083d9b44d4a95de9d813f28c4df787d42221bbe67be}{Volume\_}}\ =\ 3}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00456}\mbox{\hyperlink{classGMSH_1_1Gmsh_a53440e1a20883ffff18da5083d9b44d4a95de9d813f28c4df787d42221bbe67be}{00456}}\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00457}00457\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00458}\mbox{\hyperlink{classGMSH_1_1Gmsh_a1cb2cd47193f63b58f0d8f108316bbd1}{00458}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a1cb2cd47193f63b58f0d8f108316bbd1}{nodesPerElement}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00459}00459\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00460}\mbox{\hyperlink{classGMSH_1_1Gmsh_a131ae70cd52098fc6324410cc92fe021}{00460}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a131ae70cd52098fc6324410cc92fe021}{edgesPerElement}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00461}00461\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00462}\mbox{\hyperlink{classGMSH_1_1Gmsh_a571a128bad240a3e7ab8c1d3f9e777d7}{00462}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a571a128bad240a3e7ab8c1d3f9e777d7}{facesPerElement}}\ =\ \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{defFlag}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00463}00463\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00464}00464\ \ \ \ \ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00465}\mbox{\hyperlink{classGMSH_1_1Gmsh_a1d1e1648f34e88053a505794bc7b29b2}{00465}}\ \ \ \ \ \ \ \ \ std::vector<Tuple>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a1d1e1648f34e88053a505794bc7b29b2}{tuples}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00466}00466\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00467}\mbox{\hyperlink{classGMSH_1_1Gmsh_a57b2090f9319d7953c4d65e34b745e80}{00467}}\ \ \ \ \ \ \ \ \ std::vector<int>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a57b2090f9319d7953c4d65e34b745e80}{oldNumber}};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00468}00468\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00469}00469\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ timing}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00470}\mbox{\hyperlink{classGMSH_1_1Gmsh_a5495529989af0fdba1b686cf9e346dd6}{00470}}\ \ \ \ \ \ \ \ \ std::chrono::duration<double>\ \mbox{\hyperlink{classGMSH_1_1Gmsh_a5495529989af0fdba1b686cf9e346dd6}{duration}}\ \{\};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00471}00471\ }
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00472}00472\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00473}00473\ \}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00474}00474\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//GMSH\_H}}
+\DoxyCodeLine{\Hypertarget{gmsh__read_8h_source_l00475}00475\ }
+
+\end{DoxyCode}

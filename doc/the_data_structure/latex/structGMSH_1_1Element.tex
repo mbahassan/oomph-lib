@@ -1,0 +1,149 @@
+\doxysection{GMSH\+::Element Struct Reference}
+\hypertarget{structGMSH_1_1Element}{}\label{structGMSH_1_1Element}\index{GMSH::Element@{GMSH::Element}}
+
+
+\+: This for elements including points, edges, quads and hex elements.  
+
+
+
+
+{\ttfamily \#include $<$gmsh\+\_\+read.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{structGMSH_1_1Element_a05d6e013698696665e3f2fd6e3c1a354}{entity\+Dim}} = \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}
+\item 
+int \mbox{\hyperlink{structGMSH_1_1Element_a6d63fddff813bde573ad3b420cdeeeb6}{entity\+Tag}} = \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}
+\item 
+int \mbox{\hyperlink{structGMSH_1_1Element_a2aeefbff5f127543a7bad328759903f8}{element\+Type}} = \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}
+\item 
+int \mbox{\hyperlink{structGMSH_1_1Element_a1f45dfc5d4eafb70cb57896f66ef59ab}{num\+Elements\+In\+Block}} = \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}
+\item 
+int \mbox{\hyperlink{structGMSH_1_1Element_aa5a7383ac70198382dd3ab380de61113}{element\+Tag}} = \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}
+\item 
+int \mbox{\hyperlink{structGMSH_1_1Element_a226811534ff18a2cdb0cdddda798a69d}{node\+Tag}}
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{structGMSH_1_1Element_ab0a6e264a9d11082e7c10b5b51ec25b4}{edge\+Tags}} = \{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}, \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}\}
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{structGMSH_1_1Element_aaef1d3d895113eced2da63346cc77de2}{quad\+Tags}} = \{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}, \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}, \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}, \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}\}
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{structGMSH_1_1Element_a5c8175fff5062fdc128af02fe15d1304}{hex\+Tags}} = \{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}, \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}, \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}, \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}, \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}, \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}, \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}, \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}\}
+\item 
+std\+::set$<$ int $>$ \mbox{\hyperlink{structGMSH_1_1Element_ac092f2af945435af995dc91a26631043}{boundaries}} = \{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\+: This for elements including points, edges, quads and hex elements. 
+
+Definition at line \mbox{\hyperlink{gmsh__read_8h_source_l00085}{85}} of file \mbox{\hyperlink{gmsh__read_8h_source}{gmsh\+\_\+read.\+h}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structGMSH_1_1Element_ac092f2af945435af995dc91a26631043}\label{structGMSH_1_1Element_ac092f2af945435af995dc91a26631043} 
+\index{GMSH::Element@{GMSH::Element}!boundaries@{boundaries}}
+\index{boundaries@{boundaries}!GMSH::Element@{GMSH::Element}}
+\doxysubsubsection{\texorpdfstring{boundaries}{boundaries}}
+{\footnotesize\ttfamily std\+::set$<$int$>$ GMSH\+::\+Element\+::boundaries = \{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}\}}
+
+
+
+Definition at line \mbox{\hyperlink{gmsh__read_8h_source_l00093}{93}} of file \mbox{\hyperlink{gmsh__read_8h_source}{gmsh\+\_\+read.\+h}}.
+
+\Hypertarget{structGMSH_1_1Element_ab0a6e264a9d11082e7c10b5b51ec25b4}\label{structGMSH_1_1Element_ab0a6e264a9d11082e7c10b5b51ec25b4} 
+\index{GMSH::Element@{GMSH::Element}!edgeTags@{edgeTags}}
+\index{edgeTags@{edgeTags}!GMSH::Element@{GMSH::Element}}
+\doxysubsubsection{\texorpdfstring{edgeTags}{edgeTags}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ GMSH\+::\+Element\+::edge\+Tags = \{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}, \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}\}}
+
+
+
+Definition at line \mbox{\hyperlink{gmsh__read_8h_source_l00090}{90}} of file \mbox{\hyperlink{gmsh__read_8h_source}{gmsh\+\_\+read.\+h}}.
+
+\Hypertarget{structGMSH_1_1Element_aa5a7383ac70198382dd3ab380de61113}\label{structGMSH_1_1Element_aa5a7383ac70198382dd3ab380de61113} 
+\index{GMSH::Element@{GMSH::Element}!elementTag@{elementTag}}
+\index{elementTag@{elementTag}!GMSH::Element@{GMSH::Element}}
+\doxysubsubsection{\texorpdfstring{elementTag}{elementTag}}
+{\footnotesize\ttfamily int GMSH\+::\+Element\+::element\+Tag = \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}}
+
+
+
+Definition at line \mbox{\hyperlink{gmsh__read_8h_source_l00088}{88}} of file \mbox{\hyperlink{gmsh__read_8h_source}{gmsh\+\_\+read.\+h}}.
+
+\Hypertarget{structGMSH_1_1Element_a2aeefbff5f127543a7bad328759903f8}\label{structGMSH_1_1Element_a2aeefbff5f127543a7bad328759903f8} 
+\index{GMSH::Element@{GMSH::Element}!elementType@{elementType}}
+\index{elementType@{elementType}!GMSH::Element@{GMSH::Element}}
+\doxysubsubsection{\texorpdfstring{elementType}{elementType}}
+{\footnotesize\ttfamily int GMSH\+::\+Element\+::element\+Type = \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}}
+
+
+
+Definition at line \mbox{\hyperlink{gmsh__read_8h_source_l00087}{87}} of file \mbox{\hyperlink{gmsh__read_8h_source}{gmsh\+\_\+read.\+h}}.
+
+\Hypertarget{structGMSH_1_1Element_a05d6e013698696665e3f2fd6e3c1a354}\label{structGMSH_1_1Element_a05d6e013698696665e3f2fd6e3c1a354} 
+\index{GMSH::Element@{GMSH::Element}!entityDim@{entityDim}}
+\index{entityDim@{entityDim}!GMSH::Element@{GMSH::Element}}
+\doxysubsubsection{\texorpdfstring{entityDim}{entityDim}}
+{\footnotesize\ttfamily int GMSH\+::\+Element\+::entity\+Dim = \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}}
+
+
+
+Definition at line \mbox{\hyperlink{gmsh__read_8h_source_l00087}{87}} of file \mbox{\hyperlink{gmsh__read_8h_source}{gmsh\+\_\+read.\+h}}.
+
+\Hypertarget{structGMSH_1_1Element_a6d63fddff813bde573ad3b420cdeeeb6}\label{structGMSH_1_1Element_a6d63fddff813bde573ad3b420cdeeeb6} 
+\index{GMSH::Element@{GMSH::Element}!entityTag@{entityTag}}
+\index{entityTag@{entityTag}!GMSH::Element@{GMSH::Element}}
+\doxysubsubsection{\texorpdfstring{entityTag}{entityTag}}
+{\footnotesize\ttfamily int GMSH\+::\+Element\+::entity\+Tag = \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}}
+
+
+
+Definition at line \mbox{\hyperlink{gmsh__read_8h_source_l00087}{87}} of file \mbox{\hyperlink{gmsh__read_8h_source}{gmsh\+\_\+read.\+h}}.
+
+\Hypertarget{structGMSH_1_1Element_a5c8175fff5062fdc128af02fe15d1304}\label{structGMSH_1_1Element_a5c8175fff5062fdc128af02fe15d1304} 
+\index{GMSH::Element@{GMSH::Element}!hexTags@{hexTags}}
+\index{hexTags@{hexTags}!GMSH::Element@{GMSH::Element}}
+\doxysubsubsection{\texorpdfstring{hexTags}{hexTags}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ GMSH\+::\+Element\+::hex\+Tags = \{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}, \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}, \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}, \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}, \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}, \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}, \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}, \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}\}}
+
+
+
+Definition at line \mbox{\hyperlink{gmsh__read_8h_source_l00092}{92}} of file \mbox{\hyperlink{gmsh__read_8h_source}{gmsh\+\_\+read.\+h}}.
+
+\Hypertarget{structGMSH_1_1Element_a226811534ff18a2cdb0cdddda798a69d}\label{structGMSH_1_1Element_a226811534ff18a2cdb0cdddda798a69d} 
+\index{GMSH::Element@{GMSH::Element}!nodeTag@{nodeTag}}
+\index{nodeTag@{nodeTag}!GMSH::Element@{GMSH::Element}}
+\doxysubsubsection{\texorpdfstring{nodeTag}{nodeTag}}
+{\footnotesize\ttfamily int GMSH\+::\+Element\+::node\+Tag}
+
+
+
+Definition at line \mbox{\hyperlink{gmsh__read_8h_source_l00089}{89}} of file \mbox{\hyperlink{gmsh__read_8h_source}{gmsh\+\_\+read.\+h}}.
+
+\Hypertarget{structGMSH_1_1Element_a1f45dfc5d4eafb70cb57896f66ef59ab}\label{structGMSH_1_1Element_a1f45dfc5d4eafb70cb57896f66ef59ab} 
+\index{GMSH::Element@{GMSH::Element}!numElementsInBlock@{numElementsInBlock}}
+\index{numElementsInBlock@{numElementsInBlock}!GMSH::Element@{GMSH::Element}}
+\doxysubsubsection{\texorpdfstring{numElementsInBlock}{numElementsInBlock}}
+{\footnotesize\ttfamily int GMSH\+::\+Element\+::num\+Elements\+In\+Block = \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}}
+
+
+
+Definition at line \mbox{\hyperlink{gmsh__read_8h_source_l00087}{87}} of file \mbox{\hyperlink{gmsh__read_8h_source}{gmsh\+\_\+read.\+h}}.
+
+\Hypertarget{structGMSH_1_1Element_aaef1d3d895113eced2da63346cc77de2}\label{structGMSH_1_1Element_aaef1d3d895113eced2da63346cc77de2} 
+\index{GMSH::Element@{GMSH::Element}!quadTags@{quadTags}}
+\index{quadTags@{quadTags}!GMSH::Element@{GMSH::Element}}
+\doxysubsubsection{\texorpdfstring{quadTags}{quadTags}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ GMSH\+::\+Element\+::quad\+Tags = \{\mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}, \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}, \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}, \mbox{\hyperlink{namespaceGMSH_a8af5655ceb7f97cf14353c200060f3ce}{def\+Flag}}\}}
+
+
+
+Definition at line \mbox{\hyperlink{gmsh__read_8h_source_l00091}{91}} of file \mbox{\hyperlink{gmsh__read_8h_source}{gmsh\+\_\+read.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gmsh__read_8h}{gmsh\+\_\+read.\+h}}\end{DoxyCompactItemize}
