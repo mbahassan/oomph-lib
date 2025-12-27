@@ -293,3 +293,6 @@ $RECYCLE.BIN/
 # but keep track of *directories* ending in .cache
 !?*.[Cc]ache/
 
+.idea/
+demo_drivers/.idea/
+demo_drivers/build*

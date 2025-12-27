@@ -63,6 +63,8 @@ set(HEADERS
     Telements.h
     triangle_scaffold_mesh.h
     geompack_scaffold_mesh.h
+    gmsh_scaffold_mesh.h
+    gmsh_read.h
     tetgen_scaffold_mesh.h
     pseudo_buckling_ring.h
     simple_cubic_scaffold_tet_mesh.h
@@ -171,6 +173,8 @@ set(SOURCES
     eigen_solver.cc
     triangle_scaffold_mesh.cc
     geompack_scaffold_mesh.cc
+    gmsh_scaffold_mesh.cc
+    gmsh_read.cc
     tetgen_scaffold_mesh.cc
     simple_cubic_scaffold_tet_mesh.cc
     line_mesh.cc

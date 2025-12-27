@@ -60,6 +60,7 @@ set(TEMPLATE_HEADERS
     quad_from_triangle_mesh.h
     refineable_tetgen_mesh.h
     gmsh_tet_mesh.h
+    gmsh_mesh.h
     rectangle_with_moving_cylinder_mesh.h
     extruded_cube_mesh_from_quad_mesh_with_macro_elements.h)
 
@@ -104,6 +105,7 @@ set(TEMPLATE_IMPL_HEADERS
     quad_from_triangle_mesh.template.cc
     refineable_tetgen_mesh.template.cc
     gmsh_tet_mesh.template.cc
+    gmsh_mesh.template.cc
     rectangle_with_moving_cylinder_mesh.template.cc
     extruded_cube_mesh_from_quad_mesh_with_macro_elements.template.cc)
 
