@@ -107,6 +107,7 @@ set(HEADERS
     sample_point_container.h
     sample_point_parameters.h
     sparse_vector.h
+    fixed_size_vector.h
     geom_obj_with_boundary.h
     extruded_macro_element.h
     extruded_domain.h
@@ -124,6 +125,7 @@ set(SOURCES
     oomph_utilities.cc
     complex_matrices.cc
     matrices.cc
+    shape.cc
     timesteppers.cc
     explicit_timesteppers.cc
     integral.cc
