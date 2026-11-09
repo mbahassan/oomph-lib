@@ -3,7 +3,7 @@
 //LIC// multi-physics finite-element library, available 
 //LIC// at http://www.oomph-lib.org.
 //LIC// 
-//LIC// Copyright (C) 2006-2025 Matthias Heil and Andrew Hazel
+//LIC// Copyright (C) 2006-2026 Matthias Heil and Andrew Hazel
 //LIC// 
 //LIC// This library is free software; you can redistribute it and/or
 //LIC// modify it under the terms of the GNU Lesser General Public
@@ -277,8 +277,8 @@ namespace oomph
     this->dshape_local_at_knot(ipt,psif,dpsifds);
     
     // Set test functions equal to shape functions
-    testf = psif;
-    dtestfds = dpsifds;
+    testf.shallow_copy_from(psif);
+    dtestfds.shallow_copy_from(dpsifds);
     
     // Find the test functions and derivatives of the parent
     (void)bulk_el_pt->dshape_eulerian(s_parent,testf_parent,dtestfdx_parent);

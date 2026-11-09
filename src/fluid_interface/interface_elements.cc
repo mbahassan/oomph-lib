@@ -3,7 +3,7 @@
 // LIC// multi-physics finite-element library, available
 // LIC// at http://www.oomph-lib.org.
 // LIC//
-// LIC// Copyright (C) 2006-2025 Matthias Heil and Andrew Hazel
+// LIC// Copyright (C) 2006-2026 Matthias Heil and Andrew Hazel
 // LIC//
 // LIC// This library is free software; you can redistribute it and/or
 // LIC// modify it under the terms of the GNU Lesser General Public
@@ -781,7 +781,7 @@ namespace oomph
 
     // The surface divergence is the same as the surface
     // gradient operator
-    dpsidS_div = dpsidS;
+    dpsidS_div.shallow_copy_from(dpsidS);
 
     // Return the jacobian
     return sqrt(a11);
@@ -898,7 +898,7 @@ namespace oomph
     }
 
     // The divergence operator is the same
-    dpsidS_div = dpsidS;
+    dpsidS_div.shallow_copy_from(dpsidS);
 
     // Return the jacobian
     return sqrt(det_a);

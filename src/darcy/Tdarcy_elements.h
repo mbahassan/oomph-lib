@@ -3,7 +3,7 @@
 // LIC// multi-physics finite-element library, available
 // LIC// at http://www.oomph-lib.org.
 // LIC//
-// LIC// Copyright (C) 2006-2025 Matthias Heil and Andrew Hazel
+// LIC// Copyright (C) 2006-2026 Matthias Heil and Andrew Hazel
 // LIC//
 // LIC// This library is free software; you can redistribute it and/or
 // LIC// modify it under the terms of the GNU Lesser General Public
@@ -44,8 +44,8 @@ namespace oomph
   /// and internal flux dofs.
   //================================================================
   template<unsigned ORDER>
-  class TRaviartThomasDarcyElement : public TElement<2, 3>,
-                                     public DarcyEquations<2>
+  class TRaviartThomasDarcyElement : public virtual TElement<2, 3>,
+                                     public virtual DarcyEquations<2>
   {
   private:
     ///  Face index associated with edge flux degree of freedom
@@ -424,9 +424,9 @@ namespace oomph
 
       double J = this->transform_basis(s, q_basis_local, psi, q_basis);
 
-      q_test = q_basis;
-      p_test = p_basis;
-      div_q_test_ds = div_q_basis_ds;
+      q_test.shallow_copy_from(q_basis);
+      p_test.shallow_copy_from(p_basis);
+      div_q_test_ds.shallow_copy_from(div_q_basis_ds);
 
       return J;
     }

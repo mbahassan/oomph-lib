@@ -3,7 +3,7 @@
 // LIC// multi-physics finite-element library, available
 // LIC// at http://www.oomph-lib.org.
 // LIC//
-// LIC// Copyright (C) 2006-2025 Matthias Heil and Andrew Hazel
+// LIC// Copyright (C) 2006-2026 Matthias Heil and Andrew Hazel
 // LIC//
 // LIC// This library is free software; you can redistribute it and/or
 // LIC// modify it under the terms of the GNU Lesser General Public
@@ -992,14 +992,11 @@ namespace oomph
   {
     // Call the geometrical shape functions and derivatives
     double J = this->dshape_eulerian(s, psi, dpsidx);
-    // Loop over the test functions and derivatives and set them equal to the
-    // shape functions
-    for (unsigned i = 0; i < 9; i++)
-    {
-      test[i] = psi[i];
-      dtestdx(i, 0) = dpsidx(i, 0);
-      dtestdx(i, 1) = dpsidx(i, 1);
-    }
+
+    // Set the test functions equal to the shape functions
+    test.shallow_copy_from(psi);
+    dtestdx.shallow_copy_from(dpsidx);
+
     // Return the jacobian
     return J;
   }
@@ -1018,14 +1015,11 @@ namespace oomph
   {
     // Call the geometrical shape functions and derivatives
     double J = this->dshape_eulerian_at_knot(ipt, psi, dpsidx);
-    // Loop over the test functions and derivatives and set them equal to the
-    // shape functions
-    for (unsigned i = 0; i < 9; i++)
-    {
-      test[i] = psi[i];
-      dtestdx(i, 0) = dpsidx(i, 0);
-      dtestdx(i, 1) = dpsidx(i, 1);
-    }
+
+    // Set the test functions equal to the shape functions
+    test.shallow_copy_from(psi);
+    dtestdx.shallow_copy_from(dpsidx);
+
     // Return the jacobian
     return J;
   }
@@ -1256,14 +1250,11 @@ namespace oomph
   {
     // Call the geometrical shape functions and derivatives
     double J = this->dshape_eulerian(s, psi, dpsidx);
-    // Loop over the test functions and derivatives and set them equal to the
-    // shape functions
-    for (unsigned i = 0; i < 9; i++)
-    {
-      test[i] = psi[i];
-      dtestdx(i, 0) = dpsidx(i, 0);
-      dtestdx(i, 1) = dpsidx(i, 1);
-    }
+
+    // Set the test functions equal to the shape functions
+    test.shallow_copy_from(psi);
+    dtestdx.shallow_copy_from(dpsidx);
+
     // Return the jacobian
     return J;
   }
@@ -1283,14 +1274,11 @@ namespace oomph
   {
     // Call the geometrical shape functions and derivatives
     double J = this->dshape_eulerian_at_knot(ipt, psi, dpsidx);
-    // Loop over the test functions and derivatives and set them equal to the
-    // shape functions
-    for (unsigned i = 0; i < 9; i++)
-    {
-      test[i] = psi[i];
-      dtestdx(i, 0) = dpsidx(i, 0);
-      dtestdx(i, 1) = dpsidx(i, 1);
-    }
+
+    // Set the test functions equal to the shape functions
+    test.shallow_copy_from(psi);
+    dtestdx.shallow_copy_from(dpsidx);
+
     // Return the jacobian
     return J;
   }

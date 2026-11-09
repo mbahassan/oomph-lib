@@ -3,7 +3,7 @@
 // LIC// multi-physics finite-element library, available
 // LIC// at http://www.oomph-lib.org.
 // LIC//
-// LIC// Copyright (C) 2006-2025 Matthias Heil and Andrew Hazel
+// LIC// Copyright (C) 2006-2026 Matthias Heil and Andrew Hazel
 // LIC//
 // LIC// This library is free software; you can redistribute it and/or
 // LIC// modify it under the terms of the GNU Lesser General Public
@@ -602,7 +602,7 @@ namespace oomph
     /// zeta_boundary=1.0: we're on vertex 1.
     virtual void boundary_zeta01(const unsigned& facet_id,
                                  const double& zeta_boundary,
-                                 Vector<double>& zeta)
+                                 FixedSizeVector<double, 2>& zeta)
     {
       Vector<Vector<double>> zeta_vertex(2);
       zeta_vertex[0] = Facet_pt[facet_id]->vertex_pt(0)->zeta_in_geom_object();

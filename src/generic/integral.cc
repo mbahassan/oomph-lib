@@ -3,7 +3,7 @@
 // LIC// multi-physics finite-element library, available
 // LIC// at http://www.oomph-lib.org.
 // LIC//
-// LIC// Copyright (C) 2006-2025 Matthias Heil and Andrew Hazel
+// LIC// Copyright (C) 2006-2026 Matthias Heil and Andrew Hazel
 // LIC//
 // LIC// This library is free software; you can redistribute it and/or
 // LIC// modify it under the terms of the GNU Lesser General Public
@@ -84,13 +84,13 @@ namespace oomph
   const double Gauss<2, 3>::Knot[9][2] = {
     {-0.774596669241483, -0.774596669241483},
     {-0.774596669241483, 0.0},
-    {-0.774596669241483, 0.774596662941483},
+    {-0.774596669241483, 0.774596669241483},
     {0.0, -0.774596669241483},
     {0.0, 0.0},
-    {0.0, 0.774596662941483},
-    {0.774596662941483, -0.774596669241483},
-    {0.774596662941483, 0.0},
-    {0.774596662941483, 0.774596662941483}};
+    {0.0, 0.774596669241483},
+    {0.774596669241483, -0.774596669241483},
+    {0.774596669241483, 0.0},
+    {0.774596669241483, 0.774596669241483}};
   const double Gauss<2, 3>::Weight[9] = {(25.0 / 81.0),
                                          (40.0 / 81.0),
                                          (25.0 / 81.0),

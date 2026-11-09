@@ -3,7 +3,7 @@
 // LIC// multi-physics finite-element library, available
 // LIC// at http://www.oomph-lib.org.
 // LIC//
-// LIC// Copyright (C) 2006-2025 Matthias Heil and Andrew Hazel
+// LIC// Copyright (C) 2006-2026 Matthias Heil and Andrew Hazel
 // LIC//
 // LIC// This library is free software; you can redistribute it and/or
 // LIC// modify it under the terms of the GNU Lesser General Public
@@ -2092,8 +2092,11 @@ namespace oomph
 
     /// Output all blocks to numbered files. Called at the end of get blocks if
     /// an output filename has been set.
+    /// Final optional argument specifies the largest abs value below which
+    /// entries are suppressed
     void output_blocks_to_files(const std::string& basefilename,
-                                const unsigned& precision = 8) const
+                                const unsigned& precision = 8,
+                                const double& cutoff = 0.0) const
     {
       unsigned nblocks = internal_nblock_types();
 
@@ -2107,7 +2110,8 @@ namespace oomph
                                StringConversion::to_string(j));
 
           // Write out the block.
-          get_block(i, j).sparse_indexed_output(filename, precision, true);
+          get_block(i, j).sparse_indexed_output(
+            filename, precision, true, cutoff);
         }
       }
     } // EOFunc output_blocks_to_files(...)

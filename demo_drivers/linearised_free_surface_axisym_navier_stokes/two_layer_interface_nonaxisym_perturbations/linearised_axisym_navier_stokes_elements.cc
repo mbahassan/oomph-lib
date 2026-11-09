@@ -3,7 +3,7 @@
 //LIC// multi-physics finite-element library, available 
 //LIC// at http://www.oomph-lib.org.
 //LIC// 
-//LIC// Copyright (C) 2006-2025 Matthias Heil and Andrew Hazel
+//LIC// Copyright (C) 2006-2026 Matthias Heil and Andrew Hazel
 //LIC// 
 //LIC// This library is free software; you can redistribute it and/or
 //LIC// modify it under the terms of the GNU Lesser General Public
@@ -608,7 +608,7 @@ namespace oomph
 
     // Set the derivatives of the test functions w.r.t. local coords
     // equal to that of the shape functions
-    dtestfds = dpsifds;
+    dtestfds.shallow_copy_from(dpsifds);
 
     // Calculate the fluid shape and test functions, and their derivatives
     // w.r.t. the global coordinates
